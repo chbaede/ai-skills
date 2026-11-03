@@ -25,6 +25,16 @@ EXPECTED_REPOS = [
     "executeautomation/mcp-playwright",
     "mark3labs/mcp-go",
     "github/copilot-cli",
+    "multica-ai/andrej-karpathy-skills",
+    "Egonex-AI/Understand-Anything",
+    "hugohe3/ppt-master",
+]
+
+CURATOR_PICKS = [
+    "obra/superpowers",
+    "multica-ai/andrej-karpathy-skills",
+    "Egonex-AI/Understand-Anything",
+    "hugohe3/ppt-master",
 ]
 
 
@@ -43,9 +53,15 @@ class TestRegistrySchema(unittest.TestCase):
     def test_item_count(self):
         self.assertEqual(
             len(self.registry),
-            12,
-            f"Expected exactly 12 items in registry, found {len(self.registry)}",
+            15,
+            f"Expected exactly 15 items in registry, found {len(self.registry)}",
         )
+
+    def test_curator_picks_featured(self):
+        """Verify the 4 curator-recommended skills have featured: true."""
+        featured_repos = [item["repo"] for item in self.registry if item.get("featured")]
+        for pick in CURATOR_PICKS:
+            self.assertIn(pick, featured_repos, f"Expected {pick} to be marked as featured")
 
     def test_required_fields_and_types(self):
         required_fields = {

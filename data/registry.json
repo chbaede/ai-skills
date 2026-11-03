@@ -17,6 +17,7 @@
     "name": "Superpowers",
     "category": "Agent Tool",
     "url": "https://github.com/obra/superpowers",
+    "featured": true,
     "tags": ["agent-framework", "skills", "systematic-debugging", "tdd", "workflow"],
     "description": {
       "en": "An extensible agent skills framework and standard library that equips coding agents with structured workflows, TDD discipline, and debugging superpowers.",
@@ -141,6 +142,45 @@
     "description": {
       "en": "Command-line interface for GitHub Copilot that translates natural language queries into shell commands and provides interactive terminal explanations.",
       "ko": "자연어 질의를 쉘 명령어로 변환하고 인터랙티브한 터미널 설명을 제공하는 GitHub Copilot의 공식 커맨드 라인 인터페이스입니다."
+    }
+  },
+  {
+    "id": "multica-ai-andrej-karpathy-skills",
+    "repo": "multica-ai/andrej-karpathy-skills",
+    "name": "Karpathy AI Skills",
+    "category": "Agent Tool",
+    "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+    "featured": true,
+    "tags": ["agent-skills", "claude-code", "karpathy", "best-practices", "guidelines"],
+    "description": {
+      "en": "A comprehensive CLAUDE.md and agent skill set derived from Andrej Karpathy's observations to avoid common LLM coding pitfalls.",
+      "ko": "LLM 코딩 실수와 함정을 방지하기 위한 안드레이 카파시(Andrej Karpathy)의 인사이트를 집약한 핵심 에이전트 지침 및 스킬셋입니다."
+    }
+  },
+  {
+    "id": "egonex-ai-understand-anything",
+    "repo": "Egonex-AI/Understand-Anything",
+    "name": "Understand Anything",
+    "category": "Agent Tool",
+    "url": "https://github.com/Egonex-AI/Understand-Anything",
+    "featured": true,
+    "tags": ["knowledge-graph", "codebase-understanding", "code-intelligence", "ast", "agent-tool"],
+    "description": {
+      "en": "Turn any codebase into an interactive knowledge graph you can explore and query with Claude Code, Cursor, Codex, and AI coding agents.",
+      "ko": "코드베이스를 대화형 지식 그래프로 변환하여 Claude Code, Cursor, Codex 등 코딩 에이전트와 함께 코드를 탐색하고 질의할 수 있게 해주는 도구입니다."
+    }
+  },
+  {
+    "id": "hugohe3-ppt-master",
+    "repo": "hugohe3/ppt-master",
+    "name": "PPT Master",
+    "category": "Agent Tool",
+    "url": "https://github.com/hugohe3/ppt-master",
+    "featured": true,
+    "tags": ["presentation", "ppt", "powerpoint", "ai-agent", "automation", "slides"],
+    "description": {
+      "en": "AI agent tool that transforms documents or topics into real, native PowerPoint presentations with animations, data charts, and voice narration.",
+      "ko": "문서나 주제를 애니메이션, 데이터 차트, 음성 해설이 포함된 고품질 네이티브 파워포인트(PPTX) 발표 자료로 자동 생성하는 AI 에이전트 도구입니다."
     }
   }
 ]

@@ -293,6 +293,7 @@ def update_skills(
             "description": item["description"],
             "url": url,
             "tags": item.get("tags", []),
+            "featured": bool(item.get("featured", False)),
         }
         updated_skills.append(skill_entry)
 

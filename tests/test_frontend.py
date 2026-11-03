@@ -442,6 +442,20 @@ class TestJsApplication(unittest.TestCase):
         self.assertIn('.theme-toggle-btn', css, "Theme toggle styling missing in CSS")
         self.assertIn('.main-hub-btn', css, "Main Hub button styling missing in CSS")
 
+    def test_curator_shelf_present(self):
+        """Must ensure curator shelf section, cards container, and styles exist."""
+        with open(INDEX_HTML, "r", encoding="utf-8") as f:
+            html = f.read()
+        self.assertIn('id="curator-shelf"', html, "Curator shelf missing in index.html")
+        self.assertIn('id="curator-cards"', html, "Curator cards container missing in index.html")
+        self.assertIn('data-category="featured"', html, "Curator's picks category filter pill missing")
+
+        with open(STYLE_CSS, "r", encoding="utf-8") as f:
+            css = f.read()
+        self.assertIn('.curator-shelf', css, "Curator shelf styling missing in CSS")
+        self.assertIn('.curator-card', css, "Curator card styling missing in CSS")
+        self.assertIn('.badge-in-use', css, "Badge in-use styling missing in CSS")
+
 
 if __name__ == "__main__":
     unittest.main()

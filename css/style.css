@@ -327,6 +327,192 @@ button, input, select {
 }
 
 /* ==========================================================================
+   Curator's Shelf (Recommended & In-Use)
+   ========================================================================== */
+
+.curator-shelf {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.curator-shelf::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #eab308, var(--color-cyan), var(--color-purple));
+  opacity: 0.8;
+}
+
+.shelf-header {
+  margin-bottom: 14px;
+}
+
+.shelf-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.shelf-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background-color: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  display: inline-flex;
+  align-items: center;
+}
+
+.shelf-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.shelf-subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.curator-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 800px) {
+  .curator-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.curator-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.curator-card:hover {
+  border-color: var(--border-light);
+  background-color: var(--bg-surface-hover);
+}
+
+.curator-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.curator-card-name-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.curator-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.curator-card-title:hover {
+  color: var(--color-cyan);
+}
+
+.curator-card-repo {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.curator-card-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.badge-in-use {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: rgba(234, 179, 8, 0.12);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.curator-card-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.curator-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border-color);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.curator-card-stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pill-featured {
+  border-color: rgba(234, 179, 8, 0.35);
+  color: #eab308;
+}
+
+.pill-featured.active {
+  background-color: rgba(234, 179, 8, 0.18);
+  border-color: #eab308;
+  color: #eab308;
+}
+
+.badge-featured {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background-color: rgba(234, 179, 8, 0.12);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
    Toolbar: Search, Filters, Sorting
    ========================================================================== */
 

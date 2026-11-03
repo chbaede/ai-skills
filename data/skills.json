@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-03T11:44:32Z",
+  "updated_at": "2026-11-03T12:11:36Z",
   "week": "2026-W45",
-  "total_count": 12,
+  "total_count": 15,
   "available_snapshots": [
     "2026-W45"
   ],
@@ -11,8 +11,8 @@
       "repo": "obra/superpowers",
       "name": "Superpowers",
       "category": "Agent Tool",
-      "stars": 311540,
-      "weekly_stars": 3738,
+      "stars": 311549,
+      "weekly_stars": 3739,
       "open_issues": 351,
       "description": {
         "en": "An extensible agent skills framework and standard library that equips coding agents with structured workflows, TDD discipline, and debugging superpowers.",
@@ -25,14 +25,37 @@
         "systematic-debugging",
         "tdd",
         "workflow"
-      ]
+      ],
+      "featured": true
+    },
+    {
+      "id": "multica-ai-andrej-karpathy-skills",
+      "repo": "multica-ai/andrej-karpathy-skills",
+      "name": "Karpathy AI Skills",
+      "category": "Agent Tool",
+      "stars": 228829,
+      "weekly_stars": 2746,
+      "open_issues": 137,
+      "description": {
+        "en": "A comprehensive CLAUDE.md and agent skill set derived from Andrej Karpathy's observations to avoid common LLM coding pitfalls.",
+        "ko": "LLM 코딩 실수와 함정을 방지하기 위한 안드레이 카파시(Andrej Karpathy)의 인사이트를 집약한 핵심 에이전트 지침 및 스킬셋입니다."
+      },
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "tags": [
+        "agent-skills",
+        "claude-code",
+        "karpathy",
+        "best-practices",
+        "guidelines"
+      ],
+      "featured": true
     },
     {
       "id": "modelcontextprotocol-servers",
       "repo": "modelcontextprotocol/servers",
       "name": "MCP Official Servers",
       "category": "MCP Server",
-      "stars": 91764,
+      "stars": 91765,
       "weekly_stars": 1101,
       "open_issues": 38,
       "description": {
@@ -48,14 +71,60 @@
         "postgres",
         "git",
         "memory"
-      ]
+      ],
+      "featured": false
+    },
+    {
+      "id": "egonex-ai-understand-anything",
+      "repo": "Egonex-AI/Understand-Anything",
+      "name": "Understand Anything",
+      "category": "Agent Tool",
+      "stars": 90124,
+      "weekly_stars": 1081,
+      "open_issues": 344,
+      "description": {
+        "en": "Turn any codebase into an interactive knowledge graph you can explore and query with Claude Code, Cursor, Codex, and AI coding agents.",
+        "ko": "코드베이스를 대화형 지식 그래프로 변환하여 Claude Code, Cursor, Codex 등 코딩 에이전트와 함께 코드를 탐색하고 질의할 수 있게 해주는 도구입니다."
+      },
+      "url": "https://github.com/Egonex-AI/Understand-Anything",
+      "tags": [
+        "knowledge-graph",
+        "codebase-understanding",
+        "code-intelligence",
+        "ast",
+        "agent-tool"
+      ],
+      "featured": true
+    },
+    {
+      "id": "hugohe3-ppt-master",
+      "repo": "hugohe3/ppt-master",
+      "name": "PPT Master",
+      "category": "Agent Tool",
+      "stars": 72935,
+      "weekly_stars": 875,
+      "open_issues": 1,
+      "description": {
+        "en": "AI agent tool that transforms documents or topics into real, native PowerPoint presentations with animations, data charts, and voice narration.",
+        "ko": "문서나 주제를 애니메이션, 데이터 차트, 음성 해설이 포함된 고품질 네이티브 파워포인트(PPTX) 발표 자료로 자동 생성하는 AI 에이전트 도구입니다."
+      },
+      "url": "https://github.com/hugohe3/ppt-master",
+      "tags": [
+        "presentation",
+        "ppt",
+        "powerpoint",
+        "ai-agent",
+        "automation",
+        "slides"
+      ],
+      "featured": true
     },
     {
       "id": "cline-cline",
       "repo": "cline/cline",
       "name": "Cline",
       "category": "Coding Assistant",
-      "stars": 71249,
+      "stars": 71248,
       "weekly_stars": 855,
       "open_issues": 1753,
       "description": {
@@ -69,14 +138,15 @@
         "mcp",
         "dev-agent",
         "pair-programming"
-      ]
+      ],
+      "featured": false
     },
     {
       "id": "openinterpreter-open-interpreter",
       "repo": "openinterpreter/open-interpreter",
       "name": "Open Interpreter",
       "category": "Agent Tool",
-      "stars": 68783,
+      "stars": 68782,
       "weekly_stars": 825,
       "open_issues": 34,
       "description": {
@@ -91,7 +161,8 @@
         "terminal",
         "python",
         "automation"
-      ]
+      ],
+      "featured": false
     },
     {
       "id": "aider-ai-aider",
@@ -112,7 +183,8 @@
         "pair-programming",
         "git-integration",
         "repo-map"
-      ]
+      ],
+      "featured": false
     },
     {
       "id": "microsoft-semantic-kernel",
@@ -121,7 +193,7 @@
       "category": "Agent Plugin",
       "stars": 28726,
       "weekly_stars": 345,
-      "open_issues": 313,
+      "open_issues": 314,
       "description": {
         "en": "Enterprise SDK that integrates AI models with conventional programming languages through modular plugins, memory connectors, and prompt orchestration.",
         "ko": "모듈식 플러그인, 메모리 커넥터, 프롬프트 오케스트레이션을 통해 AI 모델을 기존 프로그래밍 언어와 원활히 결합하는 마이크로소프트의 엔터프라이즈 SDK입니다."
@@ -133,7 +205,8 @@
         "connectors",
         "sdk",
         "orchestration"
-      ]
+      ],
+      "featured": false
     },
     {
       "id": "roo-code-roo-code",
@@ -154,14 +227,15 @@
         "mcp",
         "coding-agent",
         "custom-rules"
-      ]
+      ],
+      "featured": false
     },
     {
       "id": "princeton-nlp-swe-agent",
       "repo": "princeton-nlp/SWE-agent",
       "name": "SWE-agent",
       "category": "Benchmark / Eval",
-      "stars": 20714,
+      "stars": 20715,
       "weekly_stars": 249,
       "open_issues": 173,
       "description": {
@@ -175,14 +249,15 @@
         "software-engineering",
         "autonomous-agent",
         "evaluation"
-      ]
+      ],
+      "featured": false
     },
     {
       "id": "anthropics-claude-quickstarts",
       "repo": "anthropics/claude-quickstarts",
       "name": "Claude Quickstarts",
       "category": "Agent Tool",
-      "stars": 19090,
+      "stars": 19091,
       "weekly_stars": 229,
       "open_issues": 227,
       "description": {
@@ -196,7 +271,8 @@
         "anthropic",
         "agent-toolkit",
         "starter-kits"
-      ]
+      ],
+      "featured": false
     },
     {
       "id": "github-copilot-cli",
@@ -217,7 +293,8 @@
         "terminal",
         "shell-assistant",
         "command-line"
-      ]
+      ],
+      "featured": false
     },
     {
       "id": "mark3labs-mcp-go",
@@ -238,7 +315,8 @@
         "sdk",
         "server-framework",
         "protocol"
-      ]
+      ],
+      "featured": false
     },
     {
       "id": "executeautomation-mcp-playwright",
@@ -259,7 +337,8 @@
         "browser-automation",
         "testing",
         "web-scraping"
-      ]
+      ],
+      "featured": false
     }
   ]
 }

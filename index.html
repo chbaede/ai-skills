@@ -62,6 +62,20 @@
     </header>
 
     <main class="site-main">
+      <!-- Curator's Shelf: Recommended & In-Use -->
+      <section id="curator-shelf" class="curator-shelf" aria-labelledby="curator-shelf-title">
+        <div class="shelf-header">
+          <div class="shelf-title-wrap">
+            <span class="shelf-badge">★ CURATOR'S PICKS</span>
+            <h2 id="curator-shelf-title" class="shelf-title" data-i18n="curatorShelfTitle">Recommended & In-Use</h2>
+          </div>
+          <p class="shelf-subtitle" data-i18n="curatorShelfSubtitle">Core tools and workflows actively used and personally recommended by the author.</p>
+        </div>
+        <div id="curator-cards" class="curator-cards">
+          <!-- Dynamically populated featured cards -->
+        </div>
+      </section>
+
       <section class="toolbar">
         <div class="search-box">
           <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -74,6 +88,7 @@
 
         <div id="category-filters" class="category-pills" role="tablist" aria-label="Filter by category">
           <button type="button" class="category-pill active" data-category="all" data-i18n="allCategories">All</button>
+          <button type="button" class="category-pill pill-featured" data-category="featured" data-i18n="filterCuratorPicks">★ Curator's Picks</button>
           <button type="button" class="category-pill" data-category="MCP Server" data-i18n="categoryMcpServer">MCP Server</button>
           <button type="button" class="category-pill" data-category="Agent Tool" data-i18n="categoryAgentTool">Agent Tool</button>
           <button type="button" class="category-pill" data-category="Coding Assistant" data-i18n="categoryCodingAssistant">Coding Assistant</button>

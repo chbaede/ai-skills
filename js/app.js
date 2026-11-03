@@ -40,6 +40,11 @@ const TRANSLATIONS = {
     mainHub: "Main Hub",
     themeLight: "Light Mode",
     themeDark: "Dark Mode",
+    curatorShelfTitle: "Recommended & In-Use",
+    curatorShelfSubtitle: "Core tools and workflows actively used and personally recommended by the author.",
+    filterCuratorPicks: "★ Curator's Picks",
+    badgeInUse: "★ In Use",
+    badgeCuratorPick: "★ Curator's Pick",
   },
   ko: {
     siteTitle: "AI Skills Radar",
@@ -77,6 +82,11 @@ const TRANSLATIONS = {
     mainHub: "메인 허브",
     themeLight: "라이트 모드",
     themeDark: "다크 모드",
+    curatorShelfTitle: "큐레이터 실사용 추천",
+    curatorShelfSubtitle: "작성자가 실제 업무에서 직접 사용하며 검증한 핵심 AI 스킬 및 도구입니다.",
+    filterCuratorPicks: "★ 큐레이터 추천",
+    badgeInUse: "★ 실사용",
+    badgeCuratorPick: "★ 큐레이터 추천",
   }
 };
 
@@ -235,6 +245,7 @@ function setLanguage(lang) {
   }
 
   applyLanguage(lang);
+  renderCuratorShelf();
   renderSkills();
 }
 
@@ -294,6 +305,7 @@ async function fetchSnapshot(snapshot) {
 
     updateMetaInfo(data);
     updateHistoryOptions(data.available_snapshots, data.week);
+    renderCuratorShelf();
     renderSkills();
   } catch (err) {
     console.error("Error loading snapshot:", err);
@@ -354,7 +366,9 @@ function getFilteredAndSortedSkills() {
   let list = [...state.rawSkills];
 
   // 1. Category Filter
-  if (state.selectedCategory !== "all") {
+  if (state.selectedCategory === "featured") {
+    list = list.filter((s) => Boolean(s.featured));
+  } else if (state.selectedCategory !== "all") {
     list = list.filter((s) => s.category === state.selectedCategory);
   }
 
@@ -387,6 +401,64 @@ function getFilteredAndSortedSkills() {
   });
 
   return list;
+}
+
+function renderCuratorShelf() {
+  const container = document.getElementById("curator-cards");
+  if (!container) return;
+  const dict = TRANSLATIONS[state.lang] || TRANSLATIONS.en;
+  const featuredSkills = state.rawSkills.filter((s) => Boolean(s.featured));
+
+  if (!featuredSkills.length) {
+    const shelf = document.getElementById("curator-shelf");
+    if (shelf) shelf.style.display = "none";
+    return;
+  }
+
+  const shelf = document.getElementById("curator-shelf");
+  if (shelf) shelf.style.display = "";
+
+  const html = featuredSkills
+    .map((skill) => {
+      const desc =
+        (skill.description && skill.description[state.lang]) ||
+        (skill.description && skill.description.en) ||
+        "";
+      const catBadgeClass = getCategoryBadgeClass(skill.category);
+      const delta = skill.weekly_stars !== undefined && skill.weekly_stars !== null ? skill.weekly_stars : 0;
+      const tagsHtml = (skill.tags || [])
+        .slice(0, 3)
+        .map((t) => `<span class="tag-pill">#${escapeHtml(t)}</span>`)
+        .join(" ");
+
+      return `
+        <div class="curator-card">
+          <div class="curator-card-top">
+            <div class="curator-card-name-group">
+              <a href="${escapeHtml(skill.url)}" target="_blank" rel="noopener noreferrer" class="curator-card-title">
+                ${escapeHtml(skill.name)}
+              </a>
+              <span class="curator-card-repo">${escapeHtml(skill.repo)}</span>
+            </div>
+            <div class="curator-card-badges">
+              <span class="badge-in-use">${escapeHtml(dict.badgeInUse)}</span>
+              <span class="badge ${catBadgeClass}">${escapeHtml(skill.category)}</span>
+            </div>
+          </div>
+          <p class="curator-card-desc">${escapeHtml(desc)}</p>
+          <div class="curator-card-footer">
+            <div class="curator-card-stats">
+              <span><span class="stars-icon">★</span>${formatNumber(skill.stars)}</span>
+              <span class="badge badge-delta"><span class="delta-symbol">+Δ</span> ${formatNumber(delta)} ${dict.weeklyDeltaLabel}</span>
+            </div>
+            <div class="card-tags">${tagsHtml}</div>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  container.innerHTML = html;
 }
 
 function renderSkills() {
@@ -437,6 +509,9 @@ function renderTableRow(skill) {
   const catBadgeClass = getCategoryBadgeClass(skill.category);
   const weeklyDelta = skill.weekly_stars !== undefined && skill.weekly_stars !== null ? skill.weekly_stars : 0;
   const dict = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  const featuredBadge = skill.featured
+    ? `<span class="badge-featured" title="${escapeHtml(dict.badgeCuratorPick)}">${escapeHtml(dict.badgeInUse)}</span>`
+    : "";
 
   const tagsHtml = (skill.tags || [])
     .slice(0, 4)
@@ -451,6 +526,7 @@ function renderTableRow(skill) {
             <a href="${escapeHtml(skill.url)}" target="_blank" rel="noopener noreferrer" class="skill-name">
               ${escapeHtml(skill.name)}
             </a>
+            ${featuredBadge}
             <a href="${escapeHtml(skill.url)}" target="_blank" rel="noopener noreferrer" class="skill-repo">
               ${escapeHtml(skill.repo)}
             </a>
@@ -485,6 +561,9 @@ function renderCard(skill) {
   const catBadgeClass = getCategoryBadgeClass(skill.category);
   const weeklyDelta = skill.weekly_stars !== undefined && skill.weekly_stars !== null ? skill.weekly_stars : 0;
   const dict = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  const featuredBadge = skill.featured
+    ? `<span class="badge-featured" title="${escapeHtml(dict.badgeCuratorPick)}">${escapeHtml(dict.badgeInUse)}</span>`
+    : "";
 
   const tagsHtml = (skill.tags || [])
     .map((tag) => `<span class="tag-pill">${escapeHtml(tag)}</span>`)
@@ -494,9 +573,12 @@ function renderCard(skill) {
     <article class="skill-card">
       <div class="card-top">
         <div class="card-title-group">
-          <a href="${escapeHtml(skill.url)}" target="_blank" rel="noopener noreferrer" class="card-name">
-            ${escapeHtml(skill.name)}
-          </a>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <a href="${escapeHtml(skill.url)}" target="_blank" rel="noopener noreferrer" class="card-name">
+              ${escapeHtml(skill.name)}
+            </a>
+            ${featuredBadge}
+          </div>
           <a href="${escapeHtml(skill.url)}" target="_blank" rel="noopener noreferrer" class="card-repo">
             ${escapeHtml(skill.repo)}
           </a>
