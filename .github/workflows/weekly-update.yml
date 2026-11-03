@@ -33,7 +33,7 @@ jobs:
           if [ -n "$(git status --porcelain data/)" ]; then
             git add data/
             git commit -m "chore(data): update weekly ai skills metrics" -m "Automated weekly update of GitHub stars, weekly delta, and snapshots."
-            git push origin main
+            git push origin HEAD:main
           else
             echo "No data changes detected. Skipping commit."
           fi

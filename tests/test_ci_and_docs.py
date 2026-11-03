@@ -107,6 +107,10 @@ class TestWeeklyUpdateWorkflow(unittest.TestCase):
                 f"Commit body '{body}' exceeds 72 characters (len={len(body)})",
             )
 
+    def test_git_push_target_refspec(self):
+        """Must push explicitly using HEAD:main for detached HEAD compatibility in CI."""
+        self.assertIn("git push origin HEAD:main", self.raw_content)
+
 
 class TestDeployPagesWorkflow(unittest.TestCase):
     """Validate .github/workflows/deploy-pages.yml configuration."""
