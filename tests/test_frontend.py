@@ -457,6 +457,33 @@ class TestJsApplication(unittest.TestCase):
         self.assertIn('.curator-card', css, "Curator card styling missing in CSS")
         self.assertIn('.badge-in-use', css, "Badge in-use styling missing in CSS")
 
+    def test_google_seo_meta_tags(self):
+        """Must ensure canonical link, JSON-LD, and OpenGraph SEO tags are present."""
+        with open(INDEX_HTML, "r", encoding="utf-8") as f:
+            html = f.read()
+        self.assertIn('rel="canonical"', html)
+        self.assertIn('https://aiskill.yocto.co.kr/', html)
+        self.assertIn('type="application/ld+json"', html)
+        self.assertIn('property="og:title"', html)
+        self.assertIn('name="robots" content="index, follow"', html)
+
+        # Check sitemap and robots.txt files exist
+        self.assertTrue((PROJECT_ROOT / "robots.txt").exists(), "robots.txt must exist")
+        self.assertTrue((PROJECT_ROOT / "sitemap.xml").exists(), "sitemap.xml must exist")
+
+    def test_google_adsense_integration(self):
+        """Must ensure Google AdSense client script and ad unit slot are present."""
+        with open(INDEX_HTML, "r", encoding="utf-8") as f:
+            html = f.read()
+        self.assertIn("ca-pub-6854824605420161", html)
+        self.assertIn("9426228178", html)
+        self.assertIn("adsbygoogle", html)
+        self.assertIn("ad-section", html)
+
+        with open(STYLE_CSS, "r", encoding="utf-8") as f:
+            css = f.read()
+        self.assertIn('.ad-section', css)
+
 
 if __name__ == "__main__":
     unittest.main()

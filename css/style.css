@@ -1075,3 +1075,45 @@ button, input, select {
     gap: 12px;
   }
 }
+
+/* ==========================================================================
+   Google AdSense / Sponsored Unit (Tasteful & Minimalist)
+   ========================================================================== */
+
+.ad-section {
+  margin-top: 32px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px 16px;
+  overflow: hidden;
+  transition: all 0.15s ease;
+}
+
+.ad-label-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.ad-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.ad-wrapper {
+  min-height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ad-wrapper ins.adsbygoogle {
+  background: transparent !important;
+}

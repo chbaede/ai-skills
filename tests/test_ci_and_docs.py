@@ -146,7 +146,7 @@ class TestDeployPagesWorkflow(unittest.TestCase):
             push = on_data["push"]
             self.assertIn("main", push.get("branches", []))
             paths = push.get("paths", [])
-            for required_path in ["index.html", "css/**", "js/**", "data/**", "CNAME"]:
+            for required_path in ["index.html", "css/**", "js/**", "data/**", "CNAME", "robots.txt", "sitemap.xml"]:
                 self.assertIn(required_path, paths)
             self.assertIn("workflow_dispatch", on_data)
             self.assertIn("workflow_run", on_data)

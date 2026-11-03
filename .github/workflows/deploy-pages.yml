@@ -10,6 +10,8 @@ on:
       - 'js/**'
       - 'data/**'
       - 'CNAME'
+      - 'robots.txt'
+      - 'sitemap.xml'
   workflow_run:
     workflows: ["Weekly Skills Update"]
     types:

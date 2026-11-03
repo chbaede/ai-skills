@@ -45,6 +45,7 @@ const TRANSLATIONS = {
     filterCuratorPicks: "★ Curator's Picks",
     badgeInUse: "★ In Use",
     badgeCuratorPick: "★ Curator's Pick",
+    adLabel: "Advertisement",
   },
   ko: {
     siteTitle: "AI Skills Radar",
@@ -87,6 +88,7 @@ const TRANSLATIONS = {
     filterCuratorPicks: "★ 큐레이터 추천",
     badgeInUse: "★ 실사용",
     badgeCuratorPick: "★ 큐레이터 추천",
+    adLabel: "스폰서 광고",
   }
 };
 
