@@ -24,6 +24,11 @@
   --color-pink: #f472b6;
   --color-emerald: #34d399;
 
+  --color-gold: #facc15;
+  --color-gold-bg: rgba(234, 179, 8, 0.15);
+  --color-gold-border: rgba(234, 179, 8, 0.35);
+  --color-star: #eab308;
+
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Geist", Helvetica, Arial, sans-serif;
   --font-mono: "JetBrains Mono", "Geist Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -49,6 +54,11 @@
   --color-orange: #ea580c;
   --color-pink: #db2777;
   --color-emerald: #059669;
+
+  --color-gold: #92400e;
+  --color-gold-bg: rgba(245, 158, 11, 0.14);
+  --color-gold-border: rgba(180, 83, 9, 0.35);
+  --color-star: #b45309;
 }
 
 *, *::before, *::after {
@@ -347,7 +357,7 @@ button, input, select {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #eab308, var(--color-cyan), var(--color-purple));
+  background: linear-gradient(90deg, var(--color-gold), var(--color-cyan), var(--color-purple));
   opacity: 0.8;
 }
 
@@ -369,9 +379,9 @@ button, input, select {
   letter-spacing: 0.05em;
   padding: 2px 7px;
   border-radius: 4px;
-  background-color: rgba(234, 179, 8, 0.15);
-  color: #eab308;
-  border: 1px solid rgba(234, 179, 8, 0.35);
+  background-color: var(--color-gold-bg);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold-border);
   display: inline-flex;
   align-items: center;
 }
@@ -457,12 +467,12 @@ button, input, select {
 .badge-in-use {
   font-family: var(--font-mono);
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 2px 6px;
   border-radius: 4px;
-  background-color: rgba(234, 179, 8, 0.12);
-  color: #eab308;
-  border: 1px solid rgba(234, 179, 8, 0.3);
+  background-color: var(--color-gold-bg);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold-border);
 }
 
 .curator-card-desc {
@@ -489,25 +499,25 @@ button, input, select {
 }
 
 .pill-featured {
-  border-color: rgba(234, 179, 8, 0.35);
-  color: #eab308;
+  border-color: var(--color-gold-border);
+  color: var(--color-gold);
 }
 
 .pill-featured.active {
-  background-color: rgba(234, 179, 8, 0.18);
-  border-color: #eab308;
-  color: #eab308;
+  background-color: var(--color-gold-bg);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
 }
 
 .badge-featured {
   font-family: var(--font-mono);
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 1px 5px;
   border-radius: 3px;
-  background-color: rgba(234, 179, 8, 0.12);
-  color: #eab308;
-  border: 1px solid rgba(234, 179, 8, 0.3);
+  background-color: var(--color-gold-bg);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold-border);
   margin-left: 6px;
   vertical-align: middle;
 }
@@ -816,7 +826,7 @@ button, input, select {
 }
 
 .stars-icon {
-  color: #eab308;
+  color: var(--color-star);
   margin-right: 2px;
   font-size: 11px;
 }

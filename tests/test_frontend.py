@@ -439,6 +439,7 @@ class TestJsApplication(unittest.TestCase):
         with open(STYLE_CSS, "r", encoding="utf-8") as f:
             css = f.read()
         self.assertIn('[data-theme="light"]', css, "Light theme variables missing in CSS")
+        self.assertIn('--color-gold: #92400e', css, "High-contrast amber gold variable missing in light mode")
         self.assertIn('.theme-toggle-btn', css, "Theme toggle styling missing in CSS")
         self.assertIn('.main-hub-btn', css, "Main Hub button styling missing in CSS")
 
