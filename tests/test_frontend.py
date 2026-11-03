@@ -99,6 +99,7 @@ class TestHtmlStructure(unittest.TestCase):
 
     def test_footer_present(self):
         self.assertIn("<footer", self.html, "Missing <footer> landmark element")
+        self.assertIn('href="https://github.com/chbaede/ai-skills"', self.html)
 
 
 class TestCssStyling(unittest.TestCase):
@@ -369,6 +370,58 @@ class TestJsApplication(unittest.TestCase):
             text=True,
         )
         self.assertEqual(res.returncode, 0, f"JS execution error when storage throws:\n{res.stderr}")
+
+    def test_dynamic_snapshot_history_discovery(self):
+        """Verify updateHistoryOptions dynamically populates snapshot options from data."""
+        node_script = """
+        const fs = require('fs');
+        const vm = require('vm');
+        const appCode = fs.readFileSync(process.argv[1], 'utf8');
+
+        const appendedOptions = [];
+        const mockSelect = {
+          options: [{ value: "latest" }],
+          appendChild: (opt) => {
+            appendedOptions.push(opt.value);
+            mockSelect.options.push(opt);
+          }
+        };
+
+        const sandbox = {
+          document: {
+            getElementById: (id) => (id === "history-select" ? mockSelect : null),
+            documentElement: { lang: "en" },
+            createElement: (tag) => ({ value: "", textContent: "", setAttribute: () => {} }),
+            querySelectorAll: () => [],
+            addEventListener: () => {}
+          },
+          appendedOptions: appendedOptions,
+          window: { location: { search: "" } },
+          localStorage: { getItem: () => null, setItem: () => {} },
+          navigator: { language: "en-US" },
+          console: console
+        };
+
+        vm.createContext(sandbox);
+        vm.runInContext(appCode + `
+          // Test dynamic population from available_snapshots array
+          updateHistoryOptions(["2026-W47", "2026-W46", "2026-W45"], "2026-W47");
+          if (!appendedOptions.includes("2026-W47") || !appendedOptions.includes("2026-W46")) {
+            throw new Error("Failed dynamic snapshot population: " + JSON.stringify(appendedOptions));
+          }
+          // Test graceful fallback when available_snapshots is null/empty
+          updateHistoryOptions(null, "2026-W48");
+          if (!appendedOptions.includes("2026-W48")) {
+            throw new Error("Failed fallback snapshot population: " + JSON.stringify(appendedOptions));
+          }
+        `, sandbox);
+        """
+        res = subprocess.run(
+            ["node", "-e", node_script, str(APP_JS)],
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(res.returncode, 0, f"Dynamic snapshot JS test failed:\n{res.stderr}")
 
 
 if __name__ == "__main__":

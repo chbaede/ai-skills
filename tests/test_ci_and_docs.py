@@ -139,7 +139,7 @@ class TestDeployPagesWorkflow(unittest.TestCase):
             self.assertIsNotNone(self.workflow_data)
 
     def test_triggers_push_main_paths(self):
-        """Must trigger on push to main with web paths and workflow_dispatch."""
+        """Must trigger on push to main with web paths, workflow_dispatch, and workflow_run."""
         on_data = self._get_on_section()
         if on_data:
             self.assertIn("push", on_data)
@@ -149,10 +149,28 @@ class TestDeployPagesWorkflow(unittest.TestCase):
             for required_path in ["index.html", "css/**", "js/**", "data/**"]:
                 self.assertIn(required_path, paths)
             self.assertIn("workflow_dispatch", on_data)
+            self.assertIn("workflow_run", on_data)
+            wf_run = on_data["workflow_run"]
+            self.assertIn("Weekly Skills Update", wf_run.get("workflows", []))
+            self.assertIn("completed", wf_run.get("types", []))
         else:
             self.assertIn("branches:", self.raw_content)
             self.assertIn("- main", self.raw_content)
             self.assertIn("workflow_dispatch:", self.raw_content)
+            self.assertIn("workflow_run:", self.raw_content)
+            self.assertIn("Weekly Skills Update", self.raw_content)
+            self.assertIn("completed", self.raw_content)
+
+    def test_deploy_job_conditional(self):
+        """Must ensure deploy job only executes on success when triggered via workflow_run."""
+        expected_condition = (
+            "github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'"
+        )
+        if self.workflow_data:
+            deploy_job = self.workflow_data.get("jobs", {}).get("deploy", {})
+            self.assertEqual(deploy_job.get("if"), expected_condition)
+        else:
+            self.assertIn(expected_condition, self.raw_content)
 
     def test_permissions(self):
         """Must configure pages deployment permissions: contents: read, pages: write, id-token: write."""

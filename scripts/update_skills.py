@@ -63,9 +63,22 @@ def calculate_weekly_delta(
 
     Guarantees non-negative integer result.
     """
-    if prior_stars is not None:
+    if prior_stars is not None and prior_stars > 0:
         return max(0, current_stars - prior_stars)
     return estimate_cold_start_stars(current_stars)
+
+
+def get_available_snapshots(history_dir: Path) -> List[str]:
+    """Enumerate all existing .json snapshot files in history_dir, sorted descending."""
+    if not history_dir.exists() or not history_dir.is_dir():
+        return []
+    snapshots = [
+        f.stem
+        for f in history_dir.iterdir()
+        if f.is_file() and f.suffix == ".json"
+    ]
+    snapshots.sort(reverse=True)
+    return snapshots
 
 
 def find_latest_prior_snapshot(
@@ -204,7 +217,6 @@ def update_skills(
     output_path: Path = DEFAULT_OUTPUT_PATH,
     dry_run: bool = False,
     token: Optional[str] = None,
-    force: bool = False,
     fetcher: Optional[Callable[..., Optional[Dict[str, Any]]]] = None,
     current_time: Optional[datetime.datetime] = None,
 ) -> Dict[str, Any]:
@@ -293,10 +305,16 @@ def update_skills(
         )
     )
 
+    available_snapshots = get_available_snapshots(history_dir)
+    if not dry_run and current_week not in available_snapshots:
+        available_snapshots.append(current_week)
+        available_snapshots.sort(reverse=True)
+
     result_payload: Dict[str, Any] = {
         "updated_at": current_time.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "week": current_week,
         "total_count": len(updated_skills),
+        "available_snapshots": available_snapshots,
         "skills": updated_skills,
     }
 
@@ -362,11 +380,6 @@ def parse_args(args: Optional[List[str]] = None) -> argparse.Namespace:
         help="GitHub personal access token (defaults to GITHUB_TOKEN / GH_TOKEN env).",
     )
     parser.add_argument(
-        "--force",
-        action="store_true",
-        help="Force update even if current snapshot exists.",
-    )
-    parser.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -393,7 +406,6 @@ def main() -> int:
             output_path=Path(args.output),
             dry_run=args.dry_run,
             token=args.token,
-            force=args.force,
         )
         return 0
     except Exception as exc:

@@ -18,6 +18,7 @@ from scripts.update_skills import (
     fetch_repo_metadata,
     find_latest_prior_snapshot,
     format_iso_week,
+    get_available_snapshots,
     load_history_stars_map,
     parse_args,
     update_skills,
@@ -62,6 +63,14 @@ class TestUpdaterCalculations(unittest.TestCase):
         delta = calculate_weekly_delta(current_stars=5000, prior_stars=None)
         self.assertGreater(delta, 0)
         self.assertIsInstance(delta, int)
+
+    def test_calculate_weekly_delta_prior_zero_or_negative(self):
+        # When prior_stars <= 0, cold-start estimation should be used
+        delta_zero = calculate_weekly_delta(current_stars=5000, prior_stars=0)
+        self.assertEqual(delta_zero, estimate_cold_start_stars(5000))
+
+        delta_neg = calculate_weekly_delta(current_stars=5000, prior_stars=-10)
+        self.assertEqual(delta_neg, estimate_cold_start_stars(5000))
 
 
 class TestSnapshotHistory(unittest.TestCase):
@@ -108,6 +117,19 @@ class TestSnapshotHistory(unittest.TestCase):
         self.assertEqual(stars_map.get("owner/repo1"), 1200)
         self.assertEqual(stars_map.get("owner/repo2"), 3400)
         self.assertIsNone(stars_map.get("owner/nonexistent"))
+
+    def test_get_available_snapshots_empty_dir(self):
+        result = get_available_snapshots(self.history_dir)
+        self.assertEqual(result, [])
+
+    def test_get_available_snapshots_sorted_descending(self):
+        (self.history_dir / "2026-W42.json").write_text("{}", encoding="utf-8")
+        (self.history_dir / "2026-W45.json").write_text("{}", encoding="utf-8")
+        (self.history_dir / "2026-W44.json").write_text("{}", encoding="utf-8")
+        (self.history_dir / "readme.txt").write_text("ignore", encoding="utf-8")
+
+        result = get_available_snapshots(self.history_dir)
+        self.assertEqual(result, ["2026-W45", "2026-W44", "2026-W42"])
 
 
 class TestGithubApiIntegration(unittest.TestCase):
@@ -267,6 +289,7 @@ class TestUpdaterPipeline(unittest.TestCase):
 
         self.assertEqual(data["week"], "2026-W45")
         self.assertEqual(data["total_count"], 2)
+        self.assertEqual(data["available_snapshots"], ["2026-W45"])
         # Verify sorting: Beta (2000 stars) should come before Alpha (500 stars)
         self.assertEqual(data["skills"][0]["id"], "repo-beta")
         self.assertEqual(data["skills"][0]["stars"], 2000)
@@ -326,13 +349,11 @@ class TestCliArgs(unittest.TestCase):
     def test_parse_args_defaults(self):
         args = parse_args([])
         self.assertFalse(args.dry_run)
-        self.assertFalse(args.force)
         self.assertIn("skills.json", args.output)
 
     def test_parse_args_flags(self):
-        args = parse_args(["--dry-run", "--force", "--output", "custom.json"])
+        args = parse_args(["--dry-run", "--output", "custom.json"])
         self.assertTrue(args.dry_run)
-        self.assertTrue(args.force)
         self.assertEqual(args.output, "custom.json")
 
 

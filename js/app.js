@@ -233,7 +233,7 @@ async function fetchSnapshot(snapshot) {
     state.currentSnapshot = snapshot;
 
     updateMetaInfo(data);
-    updateHistoryOptions(data.week);
+    updateHistoryOptions(data.available_snapshots, data.week);
     renderSkills();
   } catch (err) {
     console.error("Error loading snapshot:", err);
@@ -252,20 +252,36 @@ function updateMetaInfo(data) {
   }
 }
 
-function updateHistoryOptions(currentWeek) {
+function updateHistoryOptions(availableSnapshots, currentWeek) {
   const select = document.getElementById("history-select");
   if (!select) return;
 
-  const snapshots = new Set(KNOWN_SNAPSHOTS);
-  if (currentWeek) snapshots.add(currentWeek);
+  let snapshotsList = [];
+  if (Array.isArray(availableSnapshots) && availableSnapshots.length > 0) {
+    snapshotsList = availableSnapshots;
+  } else if (typeof availableSnapshots === "string") {
+    currentWeek = availableSnapshots;
+    snapshotsList = KNOWN_SNAPSHOTS;
+  } else {
+    snapshotsList = KNOWN_SNAPSHOTS;
+  }
 
-  const existingVals = Array.from(select.options).map((o) => o.value);
-  snapshots.forEach((snap) => {
+  const snapshots = new Set(snapshotsList);
+  if (currentWeek && typeof currentWeek === "string") {
+    snapshots.add(currentWeek);
+  }
+
+  const existingVals = Array.from(select.options || []).map((o) => o.value);
+  const sorted = Array.from(snapshots).sort().reverse();
+  sorted.forEach((snap) => {
     if (!existingVals.includes(snap)) {
       const opt = document.createElement("option");
       opt.value = snap;
       opt.textContent = snap;
       select.appendChild(opt);
+      if (select.options && Array.isArray(select.options)) {
+        select.options.push(opt);
+      }
     }
   });
 }

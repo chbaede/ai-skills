@@ -1,14 +1,17 @@
 {
-  "updated_at": "2026-11-03T11:03:03Z",
+  "updated_at": "2026-11-03T11:44:32Z",
   "week": "2026-W45",
   "total_count": 12,
+  "available_snapshots": [
+    "2026-W45"
+  ],
   "skills": [
     {
       "id": "obra-superpowers",
       "repo": "obra/superpowers",
       "name": "Superpowers",
       "category": "Agent Tool",
-      "stars": 311519,
+      "stars": 311540,
       "weekly_stars": 3738,
       "open_issues": 351,
       "description": {
@@ -52,7 +55,7 @@
       "repo": "cline/cline",
       "name": "Cline",
       "category": "Coding Assistant",
-      "stars": 71244,
+      "stars": 71249,
       "weekly_stars": 855,
       "open_issues": 1753,
       "description": {
@@ -95,7 +98,7 @@
       "repo": "Aider-AI/aider",
       "name": "Aider",
       "category": "Coding Assistant",
-      "stars": 49918,
+      "stars": 49919,
       "weekly_stars": 599,
       "open_issues": 1943,
       "description": {
@@ -200,7 +203,7 @@
       "repo": "github/copilot-cli",
       "name": "GitHub Copilot CLI",
       "category": "Coding Assistant",
-      "stars": 11332,
+      "stars": 11333,
       "weekly_stars": 136,
       "open_issues": 2185,
       "description": {
