@@ -315,6 +315,61 @@ class TestJsApplication(unittest.TestCase):
         )
         self.assertEqual(res.returncode, 0, f"JS execution error:\n{res.stderr}")
 
+    def test_app_js_graceful_on_storage_and_history_errors(self):
+        """Verify app handles SecurityError / throwing localStorage and replaceState gracefully."""
+        node_script = """
+        const fs = require('fs');
+        const vm = require('vm');
+
+        const appCode = fs.readFileSync(process.argv[1], 'utf-8');
+        const skillsData = JSON.parse(fs.readFileSync(process.argv[2], 'utf-8'));
+
+        const mockElements = {
+          "lang-en": { classList: { toggle: () => {} }, addEventListener: () => {} },
+          "lang-ko": { classList: { toggle: () => {} }, addEventListener: () => {} },
+          "skills-container": { innerHTML: "", style: {} },
+          "empty-state": { style: {} }
+        };
+
+        const sandbox = {
+          document: {
+            documentElement: { lang: "en" },
+            getElementById: (id) => mockElements[id] || { textContent: "", style: {}, setAttribute: () => {}, getAttribute: () => null, addEventListener: () => {}, classList: { toggle: () => {} } },
+            querySelectorAll: () => [],
+            addEventListener: () => {}
+          },
+          window: {
+            location: { search: "" },
+            history: {
+              replaceState: () => { throw new Error("SecurityError: replaceState blocked"); }
+            }
+          },
+          localStorage: {
+            getItem: () => { throw new Error("SecurityError: localStorage blocked"); },
+            setItem: () => { throw new Error("SecurityError: localStorage blocked"); }
+          },
+          navigator: { language: "ko-KR" },
+          URL: function(url) { return { searchParams: { set: () => {} } }; },
+          URLSearchParams: function(s) { return { get: () => null }; },
+          skillsData: skillsData,
+          mockElements: mockElements,
+          console: console
+        };
+
+        vm.createContext(sandbox);
+        vm.runInContext(appCode + `
+          initLanguage();
+          setLanguage("en");
+        `, sandbox);
+        """
+        data_skills = PROJECT_ROOT / "data" / "skills.json"
+        res = subprocess.run(
+            ["node", "-e", node_script, str(APP_JS), str(data_skills)],
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(res.returncode, 0, f"JS execution error when storage throws:\n{res.stderr}")
+
 
 if __name__ == "__main__":
     unittest.main()

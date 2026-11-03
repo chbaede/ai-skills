@@ -169,16 +169,20 @@ class TestGithubApiIntegration(unittest.TestCase):
             hdrs={},
             fp=None,
         )
-        meta = fetch_repo_metadata("foo/bar", token=None)
-        # Should gracefully return None without raising exception
-        self.assertIsNone(meta)
+        with patch("scripts.update_skills.logger.warning") as mock_warn:
+            meta = fetch_repo_metadata("foo/bar", token=None)
+            # Should gracefully return None without raising exception
+            self.assertIsNone(meta)
+            mock_warn.assert_called_once()
 
     @patch("urllib.request.urlopen")
     def test_fetch_repo_metadata_handles_network_error(self, mock_urlopen):
         mock_urlopen.side_effect = urllib.error.URLError(reason="Name resolution failure")
-        meta = fetch_repo_metadata("foo/bar", token=None)
-        # Should gracefully return None without raising exception
-        self.assertIsNone(meta)
+        with patch("scripts.update_skills.logger.warning") as mock_warn:
+            meta = fetch_repo_metadata("foo/bar", token=None)
+            # Should gracefully return None without raising exception
+            self.assertIsNone(meta)
+            mock_warn.assert_called_once()
 
 
 class TestUpdaterPipeline(unittest.TestCase):

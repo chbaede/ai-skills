@@ -142,7 +142,12 @@ function initLanguage() {
   if (urlLang === "ko" || urlLang === "en") {
     state.lang = urlLang;
   } else {
-    const stored = localStorage.getItem("ai_skills_lang");
+    let stored = null;
+    try {
+      stored = localStorage.getItem("ai_skills_lang");
+    } catch (err) {
+      // Ignore storage errors in restricted contexts (e.g. file://)
+    }
     if (stored === "ko" || stored === "en") {
       state.lang = stored;
     } else if (navigator.language && navigator.language.toLowerCase().startsWith("ko")) {
@@ -157,12 +162,20 @@ function initLanguage() {
 function setLanguage(lang) {
   if (lang !== "en" && lang !== "ko") return;
   state.lang = lang;
-  localStorage.setItem("ai_skills_lang", lang);
+  try {
+    localStorage.setItem("ai_skills_lang", lang);
+  } catch (err) {
+    // Ignore storage errors in restricted contexts
+  }
 
   // Sync URL query param
-  const url = new URL(window.location);
-  url.searchParams.set("lang", lang);
-  window.history.replaceState({}, "", url);
+  try {
+    const url = new URL(window.location);
+    url.searchParams.set("lang", lang);
+    window.history.replaceState({}, "", url);
+  } catch (err) {
+    // Ignore history replaceState restrictions (e.g. file:// origins)
+  }
 
   applyLanguage(lang);
   renderSkills();
