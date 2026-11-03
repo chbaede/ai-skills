@@ -1,0 +1,262 @@
+{
+  "updated_at": "2026-11-03T11:03:03Z",
+  "week": "2026-W45",
+  "total_count": 12,
+  "skills": [
+    {
+      "id": "obra-superpowers",
+      "repo": "obra/superpowers",
+      "name": "Superpowers",
+      "category": "Agent Tool",
+      "stars": 311519,
+      "weekly_stars": 3738,
+      "open_issues": 351,
+      "description": {
+        "en": "An extensible agent skills framework and standard library that equips coding agents with structured workflows, TDD discipline, and debugging superpowers.",
+        "ko": "코딩 에이전트에 체계적인 워크플로, TDD 규율, 체계적 디버깅 기능을 부여하는 확장 가능한 에이전트 스킬 프레임워크이자 표준 라이브러리입니다."
+      },
+      "url": "https://github.com/obra/superpowers",
+      "tags": [
+        "agent-framework",
+        "skills",
+        "systematic-debugging",
+        "tdd",
+        "workflow"
+      ]
+    },
+    {
+      "id": "modelcontextprotocol-servers",
+      "repo": "modelcontextprotocol/servers",
+      "name": "MCP Official Servers",
+      "category": "MCP Server",
+      "stars": 91764,
+      "weekly_stars": 1101,
+      "open_issues": 38,
+      "description": {
+        "en": "Official reference implementations of Model Context Protocol (MCP) servers providing tools and resources for PostgreSQL, Git, filesystem, memory, and web fetching.",
+        "ko": "PostgreSQL, Git, 파일시스템, 메모리, 웹 페치 등 다양한 도구와 리소스를 제공하는 Model Context Protocol(MCP) 공식 참조 서버 모음입니다."
+      },
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "tags": [
+        "mcp",
+        "reference-servers",
+        "tools",
+        "filesystem",
+        "postgres",
+        "git",
+        "memory"
+      ]
+    },
+    {
+      "id": "cline-cline",
+      "repo": "cline/cline",
+      "name": "Cline",
+      "category": "Coding Assistant",
+      "stars": 71244,
+      "weekly_stars": 855,
+      "open_issues": 1753,
+      "description": {
+        "en": "Autonomous AI coding agent for VS Code that creates and edits files, executes terminal commands, and integrates deeply with MCP servers.",
+        "ko": "파일 생성 및 수정, 터미널 명령 실행, MCP 서버 연동을 지원하여 복잡한 개발 작업을 자율적으로 수행하는 VS Code용 AI 코딩 에이전트입니다."
+      },
+      "url": "https://github.com/cline/cline",
+      "tags": [
+        "vscode",
+        "autonomous-coding",
+        "mcp",
+        "dev-agent",
+        "pair-programming"
+      ]
+    },
+    {
+      "id": "openinterpreter-open-interpreter",
+      "repo": "openinterpreter/open-interpreter",
+      "name": "Open Interpreter",
+      "category": "Agent Tool",
+      "stars": 68783,
+      "weekly_stars": 825,
+      "open_issues": 34,
+      "description": {
+        "en": "Natural language interface that enables LLMs to run code locally in Python, JS, and Bash with full access to terminal tools and files.",
+        "ko": "LLM이 로컬 환경에서 Python, JS, Bash 코드를 실행하고 터미널 도구와 로컬 파일에 접근할 수 있게 해주는 오픈소스 자연어 인터페이스입니다."
+      },
+      "url": "https://github.com/openinterpreter/openinterpreter",
+      "tags": [
+        "code-interpreter",
+        "cli",
+        "local-execution",
+        "terminal",
+        "python",
+        "automation"
+      ]
+    },
+    {
+      "id": "aider-ai-aider",
+      "repo": "Aider-AI/aider",
+      "name": "Aider",
+      "category": "Coding Assistant",
+      "stars": 49918,
+      "weekly_stars": 599,
+      "open_issues": 1943,
+      "description": {
+        "en": "AI pair programming terminal tool that pairs with LLMs to edit local Git repositories, coordinate multi-file changes, and auto-commit.",
+        "ko": "로컬 Git 저장소의 코드를 LLM과 함께 페어 프로그래밍하며 다중 파일 수정과 자동 커밋을 조율하는 터미널 기반 AI 개발 도구입니다."
+      },
+      "url": "https://github.com/Aider-AI/aider",
+      "tags": [
+        "terminal",
+        "cli",
+        "pair-programming",
+        "git-integration",
+        "repo-map"
+      ]
+    },
+    {
+      "id": "microsoft-semantic-kernel",
+      "repo": "microsoft/semantic-kernel",
+      "name": "Semantic Kernel",
+      "category": "Agent Plugin",
+      "stars": 28726,
+      "weekly_stars": 345,
+      "open_issues": 313,
+      "description": {
+        "en": "Enterprise SDK that integrates AI models with conventional programming languages through modular plugins, memory connectors, and prompt orchestration.",
+        "ko": "모듈식 플러그인, 메모리 커넥터, 프롬프트 오케스트레이션을 통해 AI 모델을 기존 프로그래밍 언어와 원활히 결합하는 마이크로소프트의 엔터프라이즈 SDK입니다."
+      },
+      "url": "https://github.com/microsoft/semantic-kernel",
+      "tags": [
+        "semantic-kernel",
+        "plugins",
+        "connectors",
+        "sdk",
+        "orchestration"
+      ]
+    },
+    {
+      "id": "roo-code-roo-code",
+      "repo": "Roo-Code/Roo-Code",
+      "name": "Roo Code",
+      "category": "Coding Assistant",
+      "stars": 24254,
+      "weekly_stars": 291,
+      "open_issues": 1031,
+      "description": {
+        "en": "Community-driven AI pair programming extension featuring multi-mode agent personas, custom instructions, and extensive MCP tool integration.",
+        "ko": "다중 에이전트 모드, 커스텀 프롬프트 지침, 강력한 MCP 도구 연동을 지원하는 커뮤니티 주도형 AI 코딩 어시스턴트 확장입니다."
+      },
+      "url": "https://github.com/RooCodeInc/Roo-Code",
+      "tags": [
+        "vscode",
+        "multi-mode",
+        "mcp",
+        "coding-agent",
+        "custom-rules"
+      ]
+    },
+    {
+      "id": "princeton-nlp-swe-agent",
+      "repo": "princeton-nlp/SWE-agent",
+      "name": "SWE-agent",
+      "category": "Benchmark / Eval",
+      "stars": 20714,
+      "weekly_stars": 249,
+      "open_issues": 173,
+      "description": {
+        "en": "Autonomous software engineering agent that resolves real GitHub issues via specialized Agent-Computer Interfaces (ACI) on SWE-bench.",
+        "ko": "특화된 에이전트-컴퓨터 인터페이스(ACI)를 통해 실제 GitHub 이슈를 자율적으로 분석하고 해결하는 SWE-bench 기반 소프트웨어 엔지니어링 에이전트입니다."
+      },
+      "url": "https://github.com/SWE-agent/SWE-agent",
+      "tags": [
+        "benchmark",
+        "swe-bench",
+        "software-engineering",
+        "autonomous-agent",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "anthropics-claude-quickstarts",
+      "repo": "anthropics/claude-quickstarts",
+      "name": "Claude Quickstarts",
+      "category": "Agent Tool",
+      "stars": 19090,
+      "weekly_stars": 229,
+      "open_issues": 227,
+      "description": {
+        "en": "Anthropic reference implementations showcasing Computer Use, agent toolkits, and multi-turn workflows built with Claude 3.5.",
+        "ko": "Claude 3.5를 활용한 컴퓨터 사용(Computer Use), 에이전트 툴킷, 멀티턴 워크플로 패턴을 구현한 Anthropic의 공식 스타터 키트 및 레퍼런스 모음입니다."
+      },
+      "url": "https://github.com/anthropics/claude-quickstarts",
+      "tags": [
+        "claude",
+        "computer-use",
+        "anthropic",
+        "agent-toolkit",
+        "starter-kits"
+      ]
+    },
+    {
+      "id": "github-copilot-cli",
+      "repo": "github/copilot-cli",
+      "name": "GitHub Copilot CLI",
+      "category": "Coding Assistant",
+      "stars": 11332,
+      "weekly_stars": 136,
+      "open_issues": 2185,
+      "description": {
+        "en": "Command-line interface for GitHub Copilot that translates natural language queries into shell commands and provides interactive terminal explanations.",
+        "ko": "자연어 질의를 쉘 명령어로 변환하고 인터랙티브한 터미널 설명을 제공하는 GitHub Copilot의 공식 커맨드 라인 인터페이스입니다."
+      },
+      "url": "https://github.com/github/copilot-cli",
+      "tags": [
+        "github-copilot",
+        "cli",
+        "terminal",
+        "shell-assistant",
+        "command-line"
+      ]
+    },
+    {
+      "id": "mark3labs-mcp-go",
+      "repo": "mark3labs/mcp-go",
+      "name": "MCP-Go",
+      "category": "MCP Server",
+      "stars": 9215,
+      "weekly_stars": 111,
+      "open_issues": 20,
+      "description": {
+        "en": "Idiomatic Go framework and SDK for building high-performance Model Context Protocol (MCP) servers and clients.",
+        "ko": "고성능 Model Context Protocol(MCP) 서버와 클라이언트를 Go 언어로 쉽게 구축할 수 있도록 지원하는 프레임워크이자 SDK입니다."
+      },
+      "url": "https://github.com/mark3labs/mcp-go",
+      "tags": [
+        "mcp",
+        "golang",
+        "sdk",
+        "server-framework",
+        "protocol"
+      ]
+    },
+    {
+      "id": "executeautomation-mcp-playwright",
+      "repo": "executeautomation/mcp-playwright",
+      "name": "Playwright MCP Server",
+      "category": "MCP Server",
+      "stars": 5674,
+      "weekly_stars": 68,
+      "open_issues": 46,
+      "description": {
+        "en": "Playwright-based Model Context Protocol server enabling LLM agents to perform end-to-end browser automation, web scraping, and UI testing.",
+        "ko": "Playwright 기반의 Model Context Protocol 서버로, LLM 에이전트가 브라우저 자동화, 웹 스크래핑, E2E UI 테스트를 실행할 수 있도록 지원합니다."
+      },
+      "url": "https://github.com/executeautomation/mcp-playwright",
+      "tags": [
+        "mcp",
+        "playwright",
+        "browser-automation",
+        "testing",
+        "web-scraping"
+      ]
+    }
+  ]
+}
