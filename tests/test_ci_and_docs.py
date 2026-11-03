@@ -146,7 +146,7 @@ class TestDeployPagesWorkflow(unittest.TestCase):
             push = on_data["push"]
             self.assertIn("main", push.get("branches", []))
             paths = push.get("paths", [])
-            for required_path in ["index.html", "css/**", "js/**", "data/**"]:
+            for required_path in ["index.html", "css/**", "js/**", "data/**", "CNAME"]:
                 self.assertIn(required_path, paths)
             self.assertIn("workflow_dispatch", on_data)
             self.assertIn("workflow_run", on_data)
@@ -171,6 +171,13 @@ class TestDeployPagesWorkflow(unittest.TestCase):
             self.assertEqual(deploy_job.get("if"), expected_condition)
         else:
             self.assertIn(expected_condition, self.raw_content)
+
+    def test_cname_file_configured(self):
+        """Must ensure custom domain CNAME file exists and contains aiskill.yocto.co.kr."""
+        cname_path = PROJECT_ROOT / "CNAME"
+        self.assertTrue(cname_path.exists(), "CNAME file must exist for custom domain")
+        content = cname_path.read_text(encoding="utf-8").strip()
+        self.assertEqual(content, "aiskill.yocto.co.kr")
 
     def test_permissions(self):
         """Must configure pages deployment permissions: contents: read, pages: write, id-token: write."""

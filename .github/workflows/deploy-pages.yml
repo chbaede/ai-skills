@@ -9,6 +9,7 @@ on:
       - 'css/**'
       - 'js/**'
       - 'data/**'
+      - 'CNAME'
   workflow_run:
     workflows: ["Weekly Skills Update"]
     types:
