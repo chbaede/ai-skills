@@ -28,6 +28,29 @@
   --font-mono: "JetBrains Mono", "Geist Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f1f5f9;
+  --bg-elevated: #e2e8f0;
+  --border-color: #e2e8f0;
+  --border-light: #cbd5e1;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --color-green: #15803d;
+  --color-green-bg: rgba(22, 163, 74, 0.08);
+  --color-green-border: rgba(22, 163, 74, 0.25);
+
+  --color-cyan: #0284c7;
+  --color-purple: #7c3aed;
+  --color-orange: #ea580c;
+  --color-pink: #db2777;
+  --color-emerald: #059669;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -255,6 +278,54 @@ button, input, select {
   color: var(--text-primary);
 }
 
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-light);
+  background-color: var(--bg-surface-hover);
+}
+
+.main-hub-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.main-hub-btn:hover {
+  color: var(--color-cyan);
+  border-color: var(--color-cyan);
+  background-color: var(--bg-surface-hover);
+}
+
+.main-hub-btn .external-icon {
+  opacity: 0.6;
+}
+
 /* ==========================================================================
    Toolbar: Search, Filters, Sorting
    ========================================================================== */
@@ -347,9 +418,9 @@ button, input, select {
 }
 
 .category-pill.active {
-  background-color: #27272a;
-  border-color: #52525b;
-  color: #fafafa;
+  background-color: var(--border-color);
+  border-color: var(--border-light);
+  color: var(--text-primary);
 }
 
 .toolbar-meta {
@@ -470,7 +541,7 @@ button, input, select {
 }
 
 .skills-table th {
-  background-color: #151518;
+  background-color: var(--bg-surface-hover);
   color: var(--text-secondary);
   font-size: 11px;
   font-family: var(--font-mono);

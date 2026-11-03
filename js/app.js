@@ -37,6 +37,9 @@ const TRANSLATIONS = {
     emptyDescription: "Try adjusting your search query or filters.",
     footerCurated: "Curated open-source intelligence for AI agent engineers.",
     footerUpdatedWeekly: "Metrics refreshed weekly via GitHub API.",
+    mainHub: "Main Hub",
+    themeLight: "Light Mode",
+    themeDark: "Dark Mode",
   },
   ko: {
     siteTitle: "AI Skills Radar",
@@ -71,6 +74,9 @@ const TRANSLATIONS = {
     emptyDescription: "검색어나 필터 조건을 변경해 보세요.",
     footerCurated: "AI 에이전트 엔지니어를 위해 엄선된 오픈소스 인텔리전스입니다.",
     footerUpdatedWeekly: "GitHub API를 통해 매주 메트릭이 업데이트됩니다.",
+    mainHub: "메인 허브",
+    themeLight: "라이트 모드",
+    themeDark: "다크 모드",
   }
 };
 
@@ -78,6 +84,7 @@ const KNOWN_SNAPSHOTS = ["2026-W45"];
 
 const state = {
   lang: "en",
+  theme: "dark",
   skillsData: null,
   rawSkills: [],
   selectedCategory: "all",
@@ -130,6 +137,56 @@ function getCategoryBadgeClass(category) {
     "Benchmark / Eval": "badge-cat-benchmark-eval",
   };
   return map[category] || "badge-cat-mcp-server";
+}
+
+// ============================================================================
+// Theme Management (Dark / Light)
+// ============================================================================
+
+function initTheme() {
+  let stored = null;
+  try {
+    stored = localStorage.getItem("ai_skills_theme");
+  } catch (err) {
+    // Ignore storage errors in restricted contexts
+  }
+  if (stored === "light" || stored === "dark") {
+    state.theme = stored;
+  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+    state.theme = "light";
+  } else {
+    state.theme = "dark";
+  }
+  applyTheme(state.theme);
+}
+
+function setTheme(theme) {
+  if (theme !== "light" && theme !== "dark") return;
+  state.theme = theme;
+  try {
+    localStorage.setItem("ai_skills_theme", theme);
+  } catch (err) {
+    // Ignore storage errors
+  }
+  applyTheme(theme);
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  updateThemeToggleUI();
+}
+
+function updateThemeToggleUI() {
+  const toggleBtn = document.getElementById("theme-toggle");
+  if (!toggleBtn) return;
+  const isLight = state.theme === "light";
+  const dict = TRANSLATIONS[state.lang] || TRANSLATIONS.en;
+  const nextThemeLabel = isLight ? dict.themeDark : dict.themeLight;
+  toggleBtn.setAttribute("aria-label", nextThemeLabel);
+  toggleBtn.title = nextThemeLabel;
+  toggleBtn.innerHTML = isLight
+    ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>${nextThemeLabel}</span>`
+    : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg><span>${nextThemeLabel}</span>`;
 }
 
 // ============================================================================
@@ -214,6 +271,9 @@ function applyLanguage(lang) {
   if (state.skillsData && state.skillsData.updated_at) {
     updateMetaInfo(state.skillsData);
   }
+
+  // Update theme toggle label for current language
+  updateThemeToggleUI();
 }
 
 // ============================================================================
@@ -534,10 +594,20 @@ function setupEventListeners() {
       fetchSnapshot(snap);
     });
   }
+
+  // Theme toggle
+  const themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = state.theme === "light" ? "dark" : "light";
+      setTheme(nextTheme);
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initLanguage();
+  initTheme();
   setupEventListeners();
   fetchSnapshot("latest");
 });

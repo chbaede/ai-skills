@@ -423,6 +423,25 @@ class TestJsApplication(unittest.TestCase):
         )
         self.assertEqual(res.returncode, 0, f"Dynamic snapshot JS test failed:\n{res.stderr}")
 
+    def test_main_hub_links_present(self):
+        """Must ensure link to https://main.yocto.co.kr/ exists in index.html."""
+        with open(INDEX_HTML, "r", encoding="utf-8") as f:
+            html = f.read()
+        self.assertIn("https://main.yocto.co.kr/", html, "Main Hub link missing in index.html")
+        self.assertRegex(html, r'href=["\']https://main\.yocto\.co\.kr/["\']')
+
+    def test_theme_toggle_and_light_mode_styles(self):
+        """Must ensure theme toggle button exists in HTML and [data-theme="light"] exists in CSS."""
+        with open(INDEX_HTML, "r", encoding="utf-8") as f:
+            html = f.read()
+        self.assertIn('id="theme-toggle"', html, "Theme toggle button missing in index.html")
+
+        with open(STYLE_CSS, "r", encoding="utf-8") as f:
+            css = f.read()
+        self.assertIn('[data-theme="light"]', css, "Light theme variables missing in CSS")
+        self.assertIn('.theme-toggle-btn', css, "Theme toggle styling missing in CSS")
+        self.assertIn('.main-hub-btn', css, "Main Hub button styling missing in CSS")
+
 
 if __name__ == "__main__":
     unittest.main()
