@@ -1,7 +1,7 @@
 {
   "updated_at": "2026-11-09T04:46:40Z",
   "week": "2026-W46",
-  "total_count": 15,
+  "total_count": 20,
   "available_snapshots": [
     "2026-W46",
     "2026-W45"
@@ -52,6 +52,30 @@
       "featured": true
     },
     {
+      "id": "anthropics-skills",
+      "repo": "anthropics/skills",
+      "name": "Anthropic Agent Skills",
+      "category": "Agent Tool",
+      "url": "https://github.com/anthropics/skills",
+      "tags": [
+        "agent-skills",
+        "specification",
+        "skill-creator",
+        "anthropic",
+        "claude-code"
+      ],
+      "description": {
+        "en": "Official specification, starter templates, and standard library for Agent Skills by Anthropic, enabling agents to run deterministic multi-step workflows.",
+        "ko": "Anthropic의 공식 Agent Skills 표준 규격, 스타터 템플릿 및 표준 라이브러리로, 코딩 에이전트가 결정론적 다단계 워크플로와 도구를 자율 실행할 수 있도록 지원합니다."
+      },
+      "stars": 190102,
+      "weekly_delta": 2281,
+      "pushed_at": "2026-11-08T00:00:00Z",
+      "open_issues": 12,
+      "archived": false,
+      "disabled": false
+    },
+    {
       "id": "modelcontextprotocol-servers",
       "repo": "modelcontextprotocol/servers",
       "name": "MCP Official Servers",
@@ -72,8 +96,7 @@
         "postgres",
         "git",
         "memory"
-      ],
-      "featured": false
+      ]
     },
     {
       "id": "egonex-ai-understand-anything",
@@ -96,6 +119,31 @@
         "agent-tool"
       ],
       "featured": true
+    },
+    {
+      "id": "career-ops-hq-career-ops",
+      "repo": "career-ops-hq/career-ops",
+      "name": "Career Ops",
+      "category": "Agent Tool",
+      "url": "https://github.com/career-ops-hq/career-ops",
+      "tags": [
+        "resume-builder",
+        "job-search",
+        "auto-apply",
+        "ats-optimization",
+        "agent-skill",
+        "claude-code"
+      ],
+      "description": {
+        "en": "AI job search agent and skill that scans job postings, tailors ATS-optimized resumes and cover letters, and helps autofill applications for AI coding assistants and Claude Code.",
+        "ko": "채용 공고를 분석하여 ATS 최적화 이력서 및 자기소개서를 맞춤 작성하고, 채용 지원서 작성을 자동 보조하는 오픈소스 AI 구직 에이전트 스킬입니다."
+      },
+      "stars": 81325,
+      "weekly_delta": 976,
+      "pushed_at": "2026-11-08T00:00:00Z",
+      "open_issues": 12,
+      "archived": false,
+      "disabled": false
     },
     {
       "id": "hugohe3-ppt-master",
@@ -139,8 +187,7 @@
         "mcp",
         "dev-agent",
         "pair-programming"
-      ],
-      "featured": false
+      ]
     },
     {
       "id": "openinterpreter-open-interpreter",
@@ -162,8 +209,32 @@
         "terminal",
         "python",
         "automation"
+      ]
+    },
+    {
+      "id": "chromedevtools-chrome-devtools-mcp",
+      "repo": "ChromeDevTools/chrome-devtools-mcp",
+      "name": "Chrome DevTools MCP",
+      "category": "MCP Server",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "tags": [
+        "mcp",
+        "devtools",
+        "chrome",
+        "frontend",
+        "dom-inspection",
+        "debugging"
       ],
-      "featured": false
+      "description": {
+        "en": "Official Chrome DevTools Model Context Protocol server enabling coding agents to inspect live DOM, debug CSS, capture screenshots, and audit frontend performance.",
+        "ko": "코딩 에이전트가 실시간 DOM을 검사하고, CSS 레이아웃을 디버깅하며, 스크린샷 캡처 및 성능 감사를 수행할 수 있도록 지원하는 구글의 공식 Chrome DevTools MCP 서버입니다."
+      },
+      "stars": 55008,
+      "weekly_delta": 660,
+      "pushed_at": "2026-11-08T00:00:00Z",
+      "open_issues": 12,
+      "archived": false,
+      "disabled": false
     },
     {
       "id": "aider-ai-aider",
@@ -184,8 +255,31 @@
         "pair-programming",
         "git-integration",
         "repo-map"
+      ]
+    },
+    {
+      "id": "feder-cr-jobs-applier-ai-agent",
+      "repo": "feder-cr/Jobs_Applier_AI_Agent",
+      "name": "AIHawk Jobs Applier",
+      "category": "Agent Tool",
+      "url": "https://github.com/feder-cr/Jobs_Applier_AI_Agent",
+      "tags": [
+        "auto-apply",
+        "job-hunting",
+        "resume-matching",
+        "automation",
+        "agent"
       ],
-      "featured": false
+      "description": {
+        "en": "Automated AI agent that searches job boards, matches candidate resumes to requirements, and auto-submits job applications 24/7.",
+        "ko": "채용 플랫폼에서 이력서와 직무 요구사항을 매칭하고, 맞춤형 지원서를 생성하여 자동으로 채용 지원을 제출하는 자율형 AI 에이전트입니다."
+      },
+      "stars": 32416,
+      "weekly_delta": 389,
+      "pushed_at": "2026-11-08T00:00:00Z",
+      "open_issues": 12,
+      "archived": false,
+      "disabled": false
     },
     {
       "id": "microsoft-semantic-kernel",
@@ -206,8 +300,7 @@
         "connectors",
         "sdk",
         "orchestration"
-      ],
-      "featured": false
+      ]
     },
     {
       "id": "roo-code-roo-code",
@@ -228,8 +321,7 @@
         "mcp",
         "coding-agent",
         "custom-rules"
-      ],
-      "featured": false
+      ]
     },
     {
       "id": "princeton-nlp-swe-agent",
@@ -250,8 +342,7 @@
         "software-engineering",
         "autonomous-agent",
         "evaluation"
-      ],
-      "featured": false
+      ]
     },
     {
       "id": "anthropics-claude-quickstarts",
@@ -272,8 +363,7 @@
         "anthropic",
         "agent-toolkit",
         "starter-kits"
-      ],
-      "featured": false
+      ]
     },
     {
       "id": "github-copilot-cli",
@@ -294,8 +384,7 @@
         "terminal",
         "shell-assistant",
         "command-line"
-      ],
-      "featured": false
+      ]
     },
     {
       "id": "mark3labs-mcp-go",
@@ -316,8 +405,7 @@
         "sdk",
         "server-framework",
         "protocol"
-      ],
-      "featured": false
+      ]
     },
     {
       "id": "executeautomation-mcp-playwright",
@@ -338,8 +426,32 @@
         "browser-automation",
         "testing",
         "web-scraping"
+      ]
+    },
+    {
+      "id": "jpisnice-shadcn-ui-mcp-server",
+      "repo": "Jpisnice/shadcn-ui-mcp-server",
+      "name": "shadcn/ui MCP Server",
+      "category": "MCP Server",
+      "url": "https://github.com/Jpisnice/shadcn-ui-mcp-server",
+      "tags": [
+        "mcp",
+        "shadcn-ui",
+        "frontend",
+        "tailwind",
+        "ui-components",
+        "react"
       ],
-      "featured": false
+      "description": {
+        "en": "MCP server that provides LLMs with deep context on shadcn/ui components, styling patterns, and CLI installation commands for React, Next.js, and Svelte.",
+        "ko": "LLM 에이전트에게 shadcn/ui 컴포넌트 구조, Tailwind 스타일링 패턴, CLI 설치 가이드를 제공하여 모던 웹 프론트엔드 UI를 빠르게 구현하도록 돕는 MCP 서버입니다."
+      },
+      "stars": 3091,
+      "weekly_delta": 37,
+      "pushed_at": "2026-11-08T00:00:00Z",
+      "open_issues": 12,
+      "archived": false,
+      "disabled": false
     }
   ]
 }

@@ -28,6 +28,11 @@ EXPECTED_REPOS = [
     "multica-ai/andrej-karpathy-skills",
     "Egonex-AI/Understand-Anything",
     "hugohe3/ppt-master",
+    "career-ops-hq/career-ops",
+    "feder-cr/Jobs_Applier_AI_Agent",
+    "anthropics/skills",
+    "ChromeDevTools/chrome-devtools-mcp",
+    "Jpisnice/shadcn-ui-mcp-server",
 ]
 
 CURATOR_PICKS = [
@@ -53,8 +58,8 @@ class TestRegistrySchema(unittest.TestCase):
     def test_item_count(self):
         self.assertEqual(
             len(self.registry),
-            15,
-            f"Expected exactly 15 items in registry, found {len(self.registry)}",
+            20,
+            f"Expected exactly 20 items in registry, found {len(self.registry)}",
         )
 
     def test_curator_picks_featured(self):
