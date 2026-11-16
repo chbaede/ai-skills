@@ -20,8 +20,19 @@ const TRANSLATIONS = {
     categoryBenchmarkEval: "Benchmark / Eval",
     sortLabel: "Sort by:",
     sortTrending: "Trending (+Δ Weekly Stars)",
+    sortTrendingDesc: "Trending (+Δ Weekly Stars ↓)",
+    sortTrendingAsc: "Trending (+Δ Weekly Stars ↑)",
     sortStars: "Total Stars",
+    sortStarsDesc: "Total Stars (High to Low ↓)",
+    sortStarsAsc: "Total Stars (Low to High ↑)",
+    sortCategoryAsc: "Category (A → Z, Grouped)",
+    sortCategoryDesc: "Category (Z → A)",
     sortIssues: "Open Issues",
+    sortIssuesDesc: "Open Issues (High to Low ↓)",
+    sortIssuesAsc: "Open Issues (Low to High ↑)",
+    sortNameAsc: "Skill Name (A → Z)",
+    sortNameDesc: "Skill Name (Z → A)",
+    filterByCategoryTip: "Click to filter by this category",
     showingResults: "Showing {count} of {total} skills",
     colName: "Skill / Tool",
     colCategory: "Category",
@@ -63,8 +74,19 @@ const TRANSLATIONS = {
     categoryBenchmarkEval: "Benchmark / Eval",
     sortLabel: "정렬 기준:",
     sortTrending: "트렌딩 (+Δ 주간 스타)",
+    sortTrendingDesc: "주간 트렌딩 높은순 (+Δ ↓)",
+    sortTrendingAsc: "주간 트렌딩 낮은순 (+Δ ↑)",
     sortStars: "총 스타 수",
+    sortStarsDesc: "스타 많은순 (★ 높은순 ↓)",
+    sortStarsAsc: "스타 적은순 (★ 낮은순 ↑)",
+    sortCategoryAsc: "카테고리순 (같은것 묶기 A→Z)",
+    sortCategoryDesc: "카테고리 역순 (Z→A)",
     sortIssues: "오픈 이슈",
+    sortIssuesDesc: "이슈 많은순 (이슈 높은순 ↓)",
+    sortIssuesAsc: "이슈 적은순 (이슈 낮은순 ↑)",
+    sortNameAsc: "이름순 (A → Z)",
+    sortNameDesc: "이름 역순 (Z → A)",
+    filterByCategoryTip: "클릭 시 이 카테고리만 필터링",
     showingResults: "{total}개 중 {count}개 표시",
     colName: "스킬 / 도구",
     colCategory: "카테고리",
@@ -389,16 +411,64 @@ function getFilteredAndSortedSkills() {
 
   // 3. Sorting
   list.sort((a, b) => {
-    if (state.sortBy === "trending") {
-      const deltaA = a.weekly_stars || 0;
-      const deltaB = b.weekly_stars || 0;
+    const mode = state.sortBy || "trending";
+
+    // Weekly Trend (+Δ Weekly Stars)
+    if (mode === "trending" || mode === "trending-desc") {
+      const deltaA = a.weekly_stars !== undefined && a.weekly_stars !== null ? a.weekly_stars : (a.weekly_delta || 0);
+      const deltaB = b.weekly_stars !== undefined && b.weekly_stars !== null ? b.weekly_stars : (b.weekly_delta || 0);
       if (deltaB !== deltaA) return deltaB - deltaA;
       return (b.stars || 0) - (a.stars || 0);
-    } else if (state.sortBy === "stars") {
+    }
+    if (mode === "trending-asc") {
+      const deltaA = a.weekly_stars !== undefined && a.weekly_stars !== null ? a.weekly_stars : (a.weekly_delta || 0);
+      const deltaB = b.weekly_stars !== undefined && b.weekly_stars !== null ? b.weekly_stars : (b.weekly_delta || 0);
+      if (deltaA !== deltaB) return deltaA - deltaB;
+      return (a.stars || 0) - (b.stars || 0);
+    }
+
+    // Total Stars
+    if (mode === "stars" || mode === "stars-desc") {
       return (b.stars || 0) - (a.stars || 0);
-    } else if (state.sortBy === "issues") {
+    }
+    if (mode === "stars-asc") {
+      return (a.stars || 0) - (b.stars || 0);
+    }
+
+    // Category: Group identical categories together, sub-sort by stars descending
+    if (mode === "category" || mode === "category-asc") {
+      const catA = (a.category || "").toLowerCase();
+      const catB = (b.category || "").toLowerCase();
+      if (catA !== catB) return catA.localeCompare(catB);
+      return (b.stars || 0) - (a.stars || 0);
+    }
+    if (mode === "category-desc") {
+      const catA = (a.category || "").toLowerCase();
+      const catB = (b.category || "").toLowerCase();
+      if (catA !== catB) return catB.localeCompare(catA);
+      return (b.stars || 0) - (a.stars || 0);
+    }
+
+    // Open Issues
+    if (mode === "issues" || mode === "issues-desc") {
       return (b.open_issues || 0) - (a.open_issues || 0);
     }
+    if (mode === "issues-asc") {
+      return (a.open_issues || 0) - (b.open_issues || 0);
+    }
+
+    // Skill Name
+    if (mode === "name" || mode === "name-asc") {
+      const nameA = (a.name || "").toLowerCase();
+      const nameB = (b.name || "").toLowerCase();
+      return nameA.localeCompare(nameB);
+    }
+    if (mode === "name-desc") {
+      const nameA = (a.name || "").toLowerCase();
+      const nameB = (b.name || "").toLowerCase();
+      return nameB.localeCompare(nameA);
+    }
+
     return 0;
   });
 
@@ -444,7 +514,7 @@ function renderCuratorShelf() {
             </div>
             <div class="curator-card-badges">
               <span class="badge-in-use">${escapeHtml(dict.badgeInUse)}</span>
-              <span class="badge ${catBadgeClass}">${escapeHtml(skill.category)}</span>
+              <span class="badge ${catBadgeClass} badge-clickable" data-filter-category="${escapeHtml(skill.category)}" title="${escapeHtml(dict.filterByCategoryTip)}">${escapeHtml(skill.category)}</span>
             </div>
           </div>
           <p class="curator-card-desc">${escapeHtml(desc)}</p>
@@ -503,6 +573,97 @@ function renderSkills() {
   if (cardsContainer) {
     cardsContainer.innerHTML = skills.map((skill) => renderCard(skill)).join("");
   }
+
+  // Update Table Header Sort Indicators
+  updateTableHeaderSortIndicators();
+}
+
+function updateTableHeaderSortIndicators() {
+  const table = document.getElementById("skills-table");
+  if (!table || typeof table.querySelectorAll !== "function") return;
+
+  const currentSort = state.sortBy || "trending";
+  const headers = table.querySelectorAll("th.th-sortable");
+  if (!headers || !headers.length) return;
+
+  headers.forEach((th) => {
+    const key = th.getAttribute("data-sort-key");
+    const icon = th.querySelector(".sort-icon");
+    if (!key || !icon) return;
+
+    let isAsc = false;
+    let isDesc = false;
+
+    if (key === "trending") {
+      if (currentSort === "trending" || currentSort === "trending-desc") isDesc = true;
+      else if (currentSort === "trending-asc") isAsc = true;
+    } else if (key === "stars") {
+      if (currentSort === "stars" || currentSort === "stars-desc") isDesc = true;
+      else if (currentSort === "stars-asc") isAsc = true;
+    } else if (key === "category") {
+      if (currentSort === "category" || currentSort === "category-asc") isAsc = true;
+      else if (currentSort === "category-desc") isDesc = true;
+    } else if (key === "issues") {
+      if (currentSort === "issues" || currentSort === "issues-desc") isDesc = true;
+      else if (currentSort === "issues-asc") isAsc = true;
+    } else if (key === "name") {
+      if (currentSort === "name" || currentSort === "name-asc") isAsc = true;
+      else if (currentSort === "name-desc") isDesc = true;
+    }
+
+    if (isAsc) {
+      th.setAttribute("aria-sort", "ascending");
+      icon.textContent = "▲";
+    } else if (isDesc) {
+      th.setAttribute("aria-sort", "descending");
+      icon.textContent = "▼";
+    } else {
+      th.setAttribute("aria-sort", "none");
+      icon.textContent = "⇅";
+    }
+  });
+
+  const sortSelect = document.getElementById("sort-select");
+  if (sortSelect && sortSelect.value !== currentSort) {
+    const opts = Array.from(sortSelect.options || []).map((o) => o.value);
+    if (opts.includes(currentSort)) {
+      sortSelect.value = currentSort;
+    }
+  }
+}
+
+function handleSortToggle(key) {
+  const current = state.sortBy || "trending";
+
+  if (key === "trending") {
+    state.sortBy = (current === "trending" || current === "trending-desc") ? "trending-asc" : "trending";
+  } else if (key === "stars") {
+    state.sortBy = (current === "stars" || current === "stars-desc") ? "stars-asc" : "stars";
+  } else if (key === "category") {
+    state.sortBy = (current === "category" || current === "category-asc") ? "category-desc" : "category-asc";
+  } else if (key === "issues") {
+    state.sortBy = (current === "issues" || current === "issues-desc") ? "issues-asc" : "issues";
+  } else if (key === "name") {
+    state.sortBy = (current === "name" || current === "name-asc") ? "name-desc" : "name-asc";
+  }
+
+  const sortSelect = document.getElementById("sort-select");
+  if (sortSelect) {
+    sortSelect.value = state.sortBy;
+  }
+
+  renderSkills();
+}
+
+function setCategory(cat) {
+  state.selectedCategory = cat;
+  const categoryFilters = document.getElementById("category-filters");
+  if (categoryFilters) {
+    categoryFilters.querySelectorAll(".category-pill").forEach((p) => {
+      p.classList.toggle("active", p.getAttribute("data-category") === cat);
+    });
+  }
+  renderSkills();
 }
 
 function renderTableRow(skill) {
@@ -537,7 +698,7 @@ function renderTableRow(skill) {
         </div>
       </td>
       <td>
-        <span class="badge ${catBadgeClass}">${escapeHtml(skill.category)}</span>
+        <span class="badge ${catBadgeClass} badge-clickable" data-filter-category="${escapeHtml(skill.category)}" title="${escapeHtml(dict.filterByCategoryTip)}">${escapeHtml(skill.category)}</span>
       </td>
       <td class="td-delta">
         <span class="badge badge-delta">
@@ -585,7 +746,7 @@ function renderCard(skill) {
             ${escapeHtml(skill.repo)}
           </a>
         </div>
-        <span class="badge ${catBadgeClass}">${escapeHtml(skill.category)}</span>
+        <span class="badge ${catBadgeClass} badge-clickable" data-filter-category="${escapeHtml(skill.category)}" title="${escapeHtml(dict.filterByCategoryTip)}">${escapeHtml(skill.category)}</span>
       </div>
 
       <p class="card-desc">${escapeHtml(desc)}</p>
@@ -668,6 +829,44 @@ function setupEventListeners() {
       state.sortBy = e.target.value;
       renderSkills();
     });
+  }
+
+  // Interactive Table Header Sorting
+  const skillsTable = document.getElementById("skills-table");
+  if (skillsTable) {
+    skillsTable.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-sort-key]");
+      if (btn) {
+        const key = btn.getAttribute("data-sort-key");
+        if (key) {
+          handleSortToggle(key);
+        }
+      }
+    });
+  }
+
+  // Clickable Category Badges to instantly filter by category
+  const handleCategoryBadgeClick = (e) => {
+    const badge = e.target.closest("[data-filter-category]");
+    if (badge) {
+      const cat = badge.getAttribute("data-filter-category");
+      if (cat) {
+        if (state.selectedCategory === cat) {
+          setCategory("all");
+        } else {
+          setCategory(cat);
+        }
+      }
+    }
+  };
+
+  const skillsContainer = document.getElementById("skills-container");
+  if (skillsContainer) {
+    skillsContainer.addEventListener("click", handleCategoryBadgeClick);
+  }
+  const curatorCards = document.getElementById("curator-cards");
+  if (curatorCards) {
+    curatorCards.addEventListener("click", handleCategoryBadgeClick);
   }
 
   // History snapshot select

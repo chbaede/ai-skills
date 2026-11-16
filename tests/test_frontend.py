@@ -89,6 +89,35 @@ class TestHtmlStructure(unittest.TestCase):
                 f"Missing category filter button for '{cat}'",
             )
 
+    def test_sortable_table_headers_in_html(self):
+        """Verify that category, trending, stars, issues, and name headers are sortable."""
+        for key in ["category", "trending", "stars", "issues", "name"]:
+            self.assertIn(
+                f'data-sort-key="{key}"',
+                self.html,
+                f"Missing sortable header button for column '{key}' in index.html",
+            )
+        self.assertIn("class=\"sort-icon\"", self.html, "Missing sort-icon indicators in headers")
+
+    def test_sort_select_options_comprehensive(self):
+        """Verify that sort dropdown includes asc/desc options for all columns."""
+        expected_options = [
+            "trending",
+            "trending-asc",
+            "stars",
+            "stars-asc",
+            "category-asc",
+            "category-desc",
+            "issues",
+            "issues-asc",
+        ]
+        for opt in expected_options:
+            self.assertIn(
+                f'value="{opt}"',
+                self.html,
+                f"Missing sort option '{opt}' in index.html #sort-select",
+            )
+
     def test_results_and_empty_state_containers(self):
         self.assertRegex(
             self.html,
@@ -243,6 +272,18 @@ class TestJsApplication(unittest.TestCase):
             "open_issues" in self.js,
             "Must support sorting by open issues",
         )
+        self.assertTrue(
+            "category" in self.js,
+            "Must support sorting and grouping by category",
+        )
+        self.assertTrue(
+            "data-sort-key" in self.js,
+            "Must support interactive table header sorting by column keys",
+        )
+        self.assertTrue(
+            "data-filter-category" in self.js,
+            "Must support clicking category badges to filter by category",
+        )
 
     def test_js_runtime_execution(self):
         """Simulate JS runtime execution in Node to verify filtering, sorting, and i18n."""
@@ -303,9 +344,44 @@ class TestJsApplication(unittest.TestCase):
           state.selectedCategory = "MCP Server";
           let list = getFilteredAndSortedSkills();
           if (list.length === 0) throw new Error("Filter returned 0 items");
+
+          // Reset category to test all items sorting
+          state.selectedCategory = "all";
+
+          // Test stars descending
           state.sortBy = "stars";
-          let sorted = getFilteredAndSortedSkills();
-          if (sorted[0].stars < sorted[sorted.length - 1].stars) throw new Error("Sort failed");
+          let sortedStarsDesc = getFilteredAndSortedSkills();
+          if (sortedStarsDesc[0].stars < sortedStarsDesc[sortedStarsDesc.length - 1].stars) {
+            throw new Error("Stars desc sort failed");
+          }
+
+          // Test stars ascending
+          state.sortBy = "stars-asc";
+          let sortedStarsAsc = getFilteredAndSortedSkills();
+          if (sortedStarsAsc[0].stars > sortedStarsAsc[sortedStarsAsc.length - 1].stars) {
+            throw new Error("Stars asc sort failed");
+          }
+
+          // Test category grouping / sorting A-Z
+          state.sortBy = "category-asc";
+          let sortedCatAsc = getFilteredAndSortedSkills();
+          if (sortedCatAsc[0].category.toLowerCase() > sortedCatAsc[sortedCatAsc.length - 1].category.toLowerCase()) {
+            throw new Error("Category asc sort failed");
+          }
+
+          // Test category Z-A
+          state.sortBy = "category-desc";
+          let sortedCatDesc = getFilteredAndSortedSkills();
+          if (sortedCatDesc[0].category.toLowerCase() < sortedCatDesc[sortedCatDesc.length - 1].category.toLowerCase()) {
+            throw new Error("Category desc sort failed");
+          }
+
+          // Test open issues ascending
+          state.sortBy = "issues-asc";
+          let sortedIssuesAsc = getFilteredAndSortedSkills();
+          if (sortedIssuesAsc[0].open_issues > sortedIssuesAsc[sortedIssuesAsc.length - 1].open_issues) {
+            throw new Error("Issues asc sort failed");
+          }
         `, sandbox);
         """
         data_skills = PROJECT_ROOT / "data" / "skills.json"

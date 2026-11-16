@@ -162,8 +162,15 @@
             <label for="sort-select" id="sort-label" data-i18n="sortLabel">Sort by:</label>
             <select id="sort-select" class="dropdown-select" aria-label="Sort skills">
               <option value="trending" data-i18n="sortTrending">Trending (+Δ Weekly Stars)</option>
+              <option value="trending-asc" data-i18n="sortTrendingAsc">Trending (+Δ Weekly Stars ↑)</option>
               <option value="stars" data-i18n="sortStars">Total Stars</option>
+              <option value="stars-asc" data-i18n="sortStarsAsc">Total Stars (Low to High ↑)</option>
+              <option value="category-asc" data-i18n="sortCategoryAsc">Category (A → Z, Grouped)</option>
+              <option value="category-desc" data-i18n="sortCategoryDesc">Category (Z → A)</option>
               <option value="issues" data-i18n="sortIssues">Open Issues</option>
+              <option value="issues-asc" data-i18n="sortIssuesAsc">Open Issues (Low to High ↑)</option>
+              <option value="name-asc" data-i18n="sortNameAsc">Skill Name (A → Z)</option>
+              <option value="name-desc" data-i18n="sortNameDesc">Skill Name (Z → A)</option>
             </select>
           </div>
         </div>
@@ -174,11 +181,36 @@
         <table id="skills-table" class="skills-table" aria-label="AI Skills Table">
           <thead>
             <tr>
-              <th scope="col" class="th-name" data-i18n="colName">Skill / Tool</th>
-              <th scope="col" class="th-category" data-i18n="colCategory">Category</th>
-              <th scope="col" class="th-delta" data-i18n="colWeeklyDelta">Weekly Trend</th>
-              <th scope="col" class="th-stars" data-i18n="colStars">Stars</th>
-              <th scope="col" class="th-issues" data-i18n="colIssues">Issues</th>
+              <th scope="col" class="th-sortable th-name" data-sort-key="name" aria-sort="none">
+                <button type="button" class="th-sort-btn" data-sort-key="name" aria-label="Sort by Skill Name">
+                  <span class="th-label" data-i18n="colName">Skill / Tool</span>
+                  <span class="sort-icon" aria-hidden="true">⇅</span>
+                </button>
+              </th>
+              <th scope="col" class="th-sortable th-category" data-sort-key="category" aria-sort="none">
+                <button type="button" class="th-sort-btn" data-sort-key="category" aria-label="Sort by Category">
+                  <span class="th-label" data-i18n="colCategory">Category</span>
+                  <span class="sort-icon" aria-hidden="true">⇅</span>
+                </button>
+              </th>
+              <th scope="col" class="th-sortable th-delta" data-sort-key="trending" aria-sort="descending">
+                <button type="button" class="th-sort-btn" data-sort-key="trending" aria-label="Sort by Weekly Trend">
+                  <span class="th-label" data-i18n="colWeeklyDelta">Weekly Trend</span>
+                  <span class="sort-icon" aria-hidden="true">▼</span>
+                </button>
+              </th>
+              <th scope="col" class="th-sortable th-stars" data-sort-key="stars" aria-sort="none">
+                <button type="button" class="th-sort-btn" data-sort-key="stars" aria-label="Sort by Stars">
+                  <span class="th-label" data-i18n="colStars">Stars</span>
+                  <span class="sort-icon" aria-hidden="true">⇅</span>
+                </button>
+              </th>
+              <th scope="col" class="th-sortable th-issues" data-sort-key="issues" aria-sort="none">
+                <button type="button" class="th-sort-btn" data-sort-key="issues" aria-label="Sort by Issues">
+                  <span class="th-label" data-i18n="colIssues">Issues</span>
+                  <span class="sort-icon" aria-hidden="true">⇅</span>
+                </button>
+              </th>
               <th scope="col" class="th-tags" data-i18n="colTags">Tags</th>
             </tr>
           </thead>
