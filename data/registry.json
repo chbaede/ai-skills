@@ -242,5 +242,17 @@
       "en": "MCP server that provides LLMs with deep context on shadcn/ui components, styling patterns, and CLI installation commands for React, Next.js, and Svelte.",
       "ko": "LLM 에이전트에게 shadcn/ui 컴포넌트 구조, Tailwind 스타일링 패턴, CLI 설치 가이드를 제공하여 모던 웹 프론트엔드 UI를 빠르게 구현하도록 돕는 MCP 서버입니다."
     }
+  },
+  {
+    "id": "affaan-m-ecc",
+    "repo": "affaan-m/ECC",
+    "name": "ECC (Everything Claude Code)",
+    "category": "Agent Tool",
+    "url": "https://github.com/affaan-m/ECC",
+    "tags": ["agent-harness", "claude-code", "optimization", "persistent-memory", "instincts", "security"],
+    "description": {
+      "en": "Agent harness performance optimization system providing persistent memory, learned instincts, security sandboxing, and research-first workflows for Claude Code, Codex, and Cursor.",
+      "ko": "지속성 메모리, 학습된 본능(Instincts), 보안 샌드박싱, Research-First 워크플로를 제공하여 Claude Code, Codex, Cursor의 성능과 토큰 효율을 극대화하는 에이전트 하네스 시스템입니다."
+    }
   }
 ]

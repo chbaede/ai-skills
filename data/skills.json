@@ -1,7 +1,7 @@
 {
   "updated_at": "2026-11-16T04:52:29Z",
   "week": "2026-W47",
-  "total_count": 20,
+  "total_count": 21,
   "available_snapshots": [
     "2026-W47",
     "2026-W46",
@@ -29,6 +29,31 @@
         "workflow"
       ],
       "featured": true
+    },
+    {
+      "id": "affaan-m-ecc",
+      "repo": "affaan-m/ECC",
+      "name": "ECC (Everything Claude Code)",
+      "category": "Agent Tool",
+      "url": "https://github.com/affaan-m/ECC",
+      "tags": [
+        "agent-harness",
+        "claude-code",
+        "optimization",
+        "persistent-memory",
+        "instincts",
+        "security"
+      ],
+      "description": {
+        "en": "Agent harness performance optimization system providing persistent memory, learned instincts, security sandboxing, and research-first workflows for Claude Code, Codex, and Cursor.",
+        "ko": "지속성 메모리, 학습된 본능(Instincts), 보안 샌드박싱, Research-First 워크플로를 제공하여 Claude Code, Codex, Cursor의 성능과 토큰 효율을 극대화하는 에이전트 하네스 시스템입니다."
+      },
+      "stars": 304401,
+      "weekly_delta": 3653,
+      "pushed_at": "2026-11-16T00:00:00Z",
+      "open_issues": 28,
+      "archived": false,
+      "disabled": false
     },
     {
       "id": "multica-ai-andrej-karpathy-skills",

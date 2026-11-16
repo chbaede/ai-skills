@@ -33,6 +33,7 @@ EXPECTED_REPOS = [
     "anthropics/skills",
     "ChromeDevTools/chrome-devtools-mcp",
     "Jpisnice/shadcn-ui-mcp-server",
+    "affaan-m/ECC",
 ]
 
 CURATOR_PICKS = [
@@ -58,8 +59,8 @@ class TestRegistrySchema(unittest.TestCase):
     def test_item_count(self):
         self.assertEqual(
             len(self.registry),
-            20,
-            f"Expected exactly 20 items in registry, found {len(self.registry)}",
+            21,
+            f"Expected exactly 21 items in registry, found {len(self.registry)}",
         )
 
     def test_curator_picks_featured(self):
