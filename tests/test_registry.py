@@ -34,6 +34,22 @@ EXPECTED_REPOS = [
     "ChromeDevTools/chrome-devtools-mcp",
     "Jpisnice/shadcn-ui-mcp-server",
     "affaan-m/ECC",
+    "mattpocock/skills",
+    "anomalyco/opencode",
+    "anthropics/claude-code",
+    "nextlevelbuilder/ui-ux-pro-max-skill",
+    "Graphify-Labs/graphify",
+    "openai/codex",
+    "JuliusBrussee/caveman",
+    "browser-use/browser-use",
+    "google-gemini/gemini-cli",
+    "tt-a1i/archify",
+    "headroomlabs-ai/headroom",
+    "upstash/context7",
+    "microsoft/playwright-mcp",
+    "github/github-mcp-server",
+    "ComposioHQ/composio",
+    "promptfoo/promptfoo",
 ]
 
 CURATOR_PICKS = [
@@ -59,8 +75,8 @@ class TestRegistrySchema(unittest.TestCase):
     def test_item_count(self):
         self.assertEqual(
             len(self.registry),
-            21,
-            f"Expected exactly 21 items in registry, found {len(self.registry)}",
+            37,
+            f"Expected exactly 37 items in registry, found {len(self.registry)}",
         )
 
     def test_curator_picks_featured(self):

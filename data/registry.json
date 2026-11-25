@@ -254,5 +254,197 @@
       "en": "Agent harness performance optimization system providing persistent memory, learned instincts, security sandboxing, and research-first workflows for Claude Code, Codex, and Cursor.",
       "ko": "지속성 메모리, 학습된 본능(Instincts), 보안 샌드박싱, Research-First 워크플로를 제공하여 Claude Code, Codex, Cursor의 성능과 토큰 효율을 극대화하는 에이전트 하네스 시스템입니다."
     }
+  },
+  {
+    "id": "mattpocock-skills",
+    "repo": "mattpocock/skills",
+    "name": "Matt Pocock's Agent Skills",
+    "category": "Agent Tool",
+    "url": "https://github.com/mattpocock/skills",
+    "tags": ["agent-skills", "typescript", "engineering", "workflows", "best-practices"],
+    "description": {
+      "en": "Production engineering skills straight from Matt Pocock's .agents directory, codifying senior-level TypeScript, testing, refactoring, and Git workflows for coding agents.",
+      "ko": "TypeScript 전문가 Matt Pocock의 실제 .agents 디렉터리에서 공개한 실무 엔지니어링 스킬셋으로, 시니어 수준의 설계·테스트·리팩토링·Git 워크플로를 코딩 에이전트에 적용합니다."
+    }
+  },
+  {
+    "id": "anomalyco-opencode",
+    "repo": "anomalyco/opencode",
+    "name": "OpenCode",
+    "category": "Coding Assistant",
+    "url": "https://github.com/anomalyco/opencode",
+    "tags": ["coding-agent", "terminal", "cli", "multi-model", "mcp", "open-source"],
+    "description": {
+      "en": "Leading open-source terminal coding agent featuring multi-provider LLM support, LSP code intelligence, MCP servers, and extensible agent skills.",
+      "ko": "멀티 LLM 프로바이더 지원, LSP 기반 코드 인텔리전스, MCP 서버 및 확장 스킬을 갖춘 대표적인 오픈소스 터미널 코딩 에이전트입니다."
+    }
+  },
+  {
+    "id": "anthropics-claude-code",
+    "repo": "anthropics/claude-code",
+    "name": "Claude Code",
+    "category": "Coding Assistant",
+    "url": "https://github.com/anthropics/claude-code",
+    "tags": ["anthropic", "claude-code", "terminal", "cli", "agentic-coding", "mcp"],
+    "description": {
+      "en": "Anthropic's official agentic coding CLI that lives in your terminal, understands entire codebases, runs routine workflows, and integrates natively with skills and MCP.",
+      "ko": "터미널에서 코드베이스 전체를 이해하고 멀티파일 편집, Git 워크플로, 스킬 및 MCP 도구 실행을 자율 수행하는 Anthropic의 공식 에이전트 코딩 CLI입니다."
+    }
+  },
+  {
+    "id": "nextlevelbuilder-ui-ux-pro-max-skill",
+    "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+    "name": "UI/UX Pro Max Skill",
+    "category": "Agent Tool",
+    "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "tags": ["agent-skills", "ui-ux", "design-system", "frontend", "claude-code"],
+    "description": {
+      "en": "AI agent skill delivering structured design intelligence, typography, color systems, and layout rules for crafting polished, non-generic UI/UX across web and mobile.",
+      "ko": "웹과 모바일 전반에서 완성도 높은 UI/UX를 구현할 수 있도록 디자인 시스템, 타이포그래피, 컬러 및 레이아웃 지능을 제공하는 AI 에이전트 전용 디자인 스킬입니다."
+    }
+  },
+  {
+    "id": "graphify-labs-graphify",
+    "repo": "Graphify-Labs/graphify",
+    "name": "Graphify",
+    "category": "Agent Tool",
+    "url": "https://github.com/Graphify-Labs/graphify",
+    "tags": ["knowledge-graph", "ast", "tree-sitter", "code-analysis", "claude-code", "mcp"],
+    "description": {
+      "en": "Turn any codebase, SQL schema, config, and PDF into a queryable knowledge graph via local deterministic AST parsing with zero vector store required.",
+      "ko": "벡터 DB 없이 로컬 결정론적 AST 파싱으로 코드베이스, SQL 스키마, 설정, PDF 문서를 탐색 가능한 지식 그래프로 변환하는 `/graphify` 에이전트 스킬입니다."
+    }
+  },
+  {
+    "id": "openai-codex",
+    "repo": "openai/codex",
+    "name": "OpenAI Codex CLI",
+    "category": "Coding Assistant",
+    "url": "https://github.com/openai/codex",
+    "tags": ["openai", "codex", "terminal", "cli", "coding-agent", "sandbox"],
+    "description": {
+      "en": "OpenAI's official open-source lightweight coding agent that runs directly in your terminal with sandboxed execution, codebase editing, MCP, and skill support.",
+      "ko": "샌드박스 실행 환경, 코드베이스 편집, MCP 및 스킬 연동을 지원하며 터미널에서 가볍고 빠르게 동작하는 OpenAI의 공식 오픈소스 코딩 에이전트입니다."
+    }
+  },
+  {
+    "id": "juliusbrussee-caveman",
+    "repo": "JuliusBrussee/caveman",
+    "name": "Caveman",
+    "category": "Agent Plugin",
+    "url": "https://github.com/JuliusBrussee/caveman",
+    "tags": ["token-optimization", "compression", "proxy", "agent-skills", "claude-code"],
+    "description": {
+      "en": "Ultra-terse skill and local proxy plugin for coding agents that trims verbose prose and bulky tool outputs to dramatically cut token usage without losing precision.",
+      "ko": "코딩 에이전트의 장황한 답변과 방대한 도구 출력을 핵심만 남기도록 압축해 정확도를 유지하면서 토큰 사용량과 비용을 대폭 절감하는 스킬·로컬 프록시 플러그인입니다."
+    }
+  },
+  {
+    "id": "browser-use-browser-use",
+    "repo": "browser-use/browser-use",
+    "name": "Browser Use",
+    "category": "Agent Tool",
+    "url": "https://github.com/browser-use/browser-use",
+    "tags": ["browser-agent", "web-automation", "playwright", "python", "ai-agent"],
+    "description": {
+      "en": "Open-source AI browser agent framework that lets LLMs autonomously navigate websites, interact with complex UIs, fill forms, and execute real-world web tasks.",
+      "ko": "LLM이 실제 웹 브라우저를 직접 조작해 사이트 탐색, 복잡한 UI 클릭, 양식 입력 등 실생활 및 업무 웹 작업을 자율 수행할 수 있게 해주는 대표 오픈소스 브라우저 에이전트입니다."
+    }
+  },
+  {
+    "id": "google-gemini-gemini-cli",
+    "repo": "google-gemini/gemini-cli",
+    "name": "Gemini CLI",
+    "category": "Coding Assistant",
+    "url": "https://github.com/google-gemini/gemini-cli",
+    "tags": ["google", "gemini", "terminal", "cli", "coding-agent", "mcp"],
+    "description": {
+      "en": "Google's official open-source terminal AI agent bringing Gemini directly into your shell with native MCP server integration, code editing, and workflow automation.",
+      "ko": "네이티브 MCP 서버 연동, 코드베이스 편집 및 워크플로 자동화 기능을 갖추어 터미널에서 Gemini 에이전트를 바로 활용할 수 있는 Google의 공식 오픈소스 CLI입니다."
+    }
+  },
+  {
+    "id": "tt-a1i-archify",
+    "repo": "tt-a1i/archify",
+    "name": "Archify",
+    "category": "Agent Tool",
+    "url": "https://github.com/tt-a1i/archify",
+    "tags": ["architecture-diagram", "mermaid", "visualization", "agent-skills", "claude-code"],
+    "description": {
+      "en": "Agent skill for Claude Code and Codex that transforms ideas, plans, or existing codebases into interactive architecture diagrams and structural diagnostics.",
+      "ko": "아이디어, 설계 계획 또는 실제 코드베이스를 10가지 유형의 인터랙티브 아키텍처 다이어그램과 구조 진단 리포트로 즉시 시각화해 주는 코딩 에이전트 스킬입니다."
+    }
+  },
+  {
+    "id": "headroomlabs-ai-headroom",
+    "repo": "headroomlabs-ai/headroom",
+    "name": "Headroom",
+    "category": "MCP Server",
+    "url": "https://github.com/headroomlabs-ai/headroom",
+    "tags": ["mcp", "context-compression", "token-optimization", "proxy", "rag"],
+    "description": {
+      "en": "Context compression proxy and MCP server that compacts tool outputs, logs, files, and JSON (60-95% fewer JSON tokens) before they reach the LLM with equivalent accuracy.",
+      "ko": "도구 출력, 로그, 파일 및 JSON 데이터를 LLM 전달 전에 압축(JSON 60~95%, 에이전트 20% 이상 토큰 절감)하여 컨텍스트 효율을 극대화하는 프록시 및 MCP 서버입니다."
+    }
+  },
+  {
+    "id": "upstash-context7",
+    "repo": "upstash/context7",
+    "name": "Context7 MCP",
+    "category": "MCP Server",
+    "url": "https://github.com/upstash/context7",
+    "tags": ["mcp", "documentation", "context", "libraries", "coding-agent"],
+    "description": {
+      "en": "MCP server that injects up-to-date, version-specific library documentation and code examples directly into AI coding agent prompts to eliminate stale API hallucinations.",
+      "ko": "최신 버전 기준의 공식 라이브러리 문서와 코드 예제를 코딩 에이전트 컨텍스트에 실시간 주입해 구버전 API 환각 문제를 해결하는 필수 MCP 서버입니다."
+    }
+  },
+  {
+    "id": "microsoft-playwright-mcp",
+    "repo": "microsoft/playwright-mcp",
+    "name": "Microsoft Playwright MCP",
+    "category": "MCP Server",
+    "url": "https://github.com/microsoft/playwright-mcp",
+    "tags": ["mcp", "microsoft", "playwright", "browser-automation", "accessibility", "testing"],
+    "description": {
+      "en": "Microsoft's official Playwright MCP server enabling LLMs to interact with web pages through structured accessibility snapshots without fragile pixel-based vision scraping.",
+      "ko": "구조화된 접근성 스냅샷 기반으로 LLM이 웹 페이지를 빠르고 결정론적으로 탐색·테스트할 수 있도록 지원하는 마이크로소프트의 공식 Playwright MCP 서버입니다."
+    }
+  },
+  {
+    "id": "github-github-mcp-server",
+    "repo": "github/github-mcp-server",
+    "name": "GitHub Official MCP Server",
+    "category": "MCP Server",
+    "url": "https://github.com/github/github-mcp-server",
+    "tags": ["mcp", "github", "issues", "pull-requests", "actions", "devops"],
+    "description": {
+      "en": "GitHub's official Model Context Protocol server providing AI agents seamless, authenticated access to repositories, issues, pull requests, code search, and Actions.",
+      "ko": "AI 에이전트가 GitHub 저장소, 이슈, PR 리뷰, 코드 검색 및 GitHub Actions 워크플로를 직접 안전하게 제어할 수 있도록 제공하는 GitHub 공식 MCP 서버입니다."
+    }
+  },
+  {
+    "id": "composiohq-composio",
+    "repo": "ComposioHQ/composio",
+    "name": "Composio",
+    "category": "Agent Plugin",
+    "url": "https://github.com/ComposioHQ/composio",
+    "tags": ["plugins", "toolkits", "integrations", "auth", "mcp", "workbench"],
+    "description": {
+      "en": "Open-source agent plugin and integration platform offering 1,000+ authenticated toolkits, managed OAuth, tool search, and a sandboxed workbench for production AI agents.",
+      "ko": "GitHub, Slack, Gmail, Notion 등 1,000개 이상의 인증된 외부 서비스 툴킷과 OAuth 관리, 샌드박스 워크벤치를 제공하는 오픈소스 AI 에이전트 플러그인 플랫폼입니다."
+    }
+  },
+  {
+    "id": "promptfoo-promptfoo",
+    "repo": "promptfoo/promptfoo",
+    "name": "Promptfoo",
+    "category": "Benchmark / Eval",
+    "url": "https://github.com/promptfoo/promptfoo",
+    "tags": ["evaluation", "benchmark", "red-teaming", "testing", "ci-cd", "security"],
+    "description": {
+      "en": "Declarative evaluation and red-teaming framework for testing prompts, AI agents, and RAG pipelines with side-by-side model comparisons and CI/CD regression checks.",
+      "ko": "프롬프트, AI 에이전트, RAG 파이프라인의 품질 평가와 모델 비교, 자동화된 AI 보안 레드티밍 및 CI/CD 회귀 테스트를 지원하는 표준 평가 프레임워크입니다."
+    }
   }
 ]
