@@ -22,7 +22,6 @@ EXPECTED_REPOS = [
     "Aider-AI/aider",
     "princeton-nlp/SWE-agent",
     "microsoft/semantic-kernel",
-    "executeautomation/mcp-playwright",
     "mark3labs/mcp-go",
     "github/copilot-cli",
     "multica-ai/andrej-karpathy-skills",
@@ -32,7 +31,6 @@ EXPECTED_REPOS = [
     "feder-cr/Jobs_Applier_AI_Agent",
     "anthropics/skills",
     "ChromeDevTools/chrome-devtools-mcp",
-    "Jpisnice/shadcn-ui-mcp-server",
     "affaan-m/ECC",
     "mattpocock/skills",
     "anomalyco/opencode",
@@ -50,6 +48,10 @@ EXPECTED_REPOS = [
     "github/github-mcp-server",
     "ComposioHQ/composio",
     "promptfoo/promptfoo",
+    "addyosmani/agent-skills",
+    "pbakaus/impeccable",
+    "coreyhaines31/marketingskills",
+    "DayuanJiang/next-ai-draw-io",
 ]
 
 CURATOR_PICKS = [
@@ -75,8 +77,8 @@ class TestRegistrySchema(unittest.TestCase):
     def test_item_count(self):
         self.assertEqual(
             len(self.registry),
-            37,
-            f"Expected exactly 37 items in registry, found {len(self.registry)}",
+            39,
+            f"Expected exactly 39 items in registry, found {len(self.registry)}",
         )
 
     def test_curator_picks_featured(self):

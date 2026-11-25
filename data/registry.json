@@ -109,18 +109,6 @@
     }
   },
   {
-    "id": "executeautomation-mcp-playwright",
-    "repo": "executeautomation/mcp-playwright",
-    "name": "Playwright MCP Server",
-    "category": "MCP Server",
-    "url": "https://github.com/executeautomation/mcp-playwright",
-    "tags": ["mcp", "playwright", "browser-automation", "testing", "web-scraping"],
-    "description": {
-      "en": "Playwright-based Model Context Protocol server enabling LLM agents to perform end-to-end browser automation, web scraping, and UI testing.",
-      "ko": "Playwright 기반의 Model Context Protocol 서버로, LLM 에이전트가 브라우저 자동화, 웹 스크래핑, E2E UI 테스트를 실행할 수 있도록 지원합니다."
-    }
-  },
-  {
     "id": "mark3labs-mcp-go",
     "repo": "mark3labs/mcp-go",
     "name": "MCP-Go",
@@ -229,18 +217,6 @@
     "description": {
       "en": "Official Chrome DevTools Model Context Protocol server enabling coding agents to inspect live DOM, debug CSS, capture screenshots, and audit frontend performance.",
       "ko": "코딩 에이전트가 실시간 DOM을 검사하고, CSS 레이아웃을 디버깅하며, 스크린샷 캡처 및 성능 감사를 수행할 수 있도록 지원하는 구글의 공식 Chrome DevTools MCP 서버입니다."
-    }
-  },
-  {
-    "id": "jpisnice-shadcn-ui-mcp-server",
-    "repo": "Jpisnice/shadcn-ui-mcp-server",
-    "name": "shadcn/ui MCP Server",
-    "category": "MCP Server",
-    "url": "https://github.com/Jpisnice/shadcn-ui-mcp-server",
-    "tags": ["mcp", "shadcn-ui", "frontend", "tailwind", "ui-components", "react"],
-    "description": {
-      "en": "MCP server that provides LLMs with deep context on shadcn/ui components, styling patterns, and CLI installation commands for React, Next.js, and Svelte.",
-      "ko": "LLM 에이전트에게 shadcn/ui 컴포넌트 구조, Tailwind 스타일링 패턴, CLI 설치 가이드를 제공하여 모던 웹 프론트엔드 UI를 빠르게 구현하도록 돕는 MCP 서버입니다."
     }
   },
   {
@@ -445,6 +421,54 @@
     "description": {
       "en": "Declarative evaluation and red-teaming framework for testing prompts, AI agents, and RAG pipelines with side-by-side model comparisons and CI/CD regression checks.",
       "ko": "프롬프트, AI 에이전트, RAG 파이프라인의 품질 평가와 모델 비교, 자동화된 AI 보안 레드티밍 및 CI/CD 회귀 테스트를 지원하는 표준 평가 프레임워크입니다."
+    }
+  },
+  {
+    "id": "addyosmani-agent-skills",
+    "repo": "addyosmani/agent-skills",
+    "name": "Addy Osmani Agent Skills",
+    "category": "Agent Tool",
+    "url": "https://github.com/addyosmani/agent-skills",
+    "tags": ["agent-skills", "production-engineering", "web-performance", "best-practices", "claude-code"],
+    "description": {
+      "en": "Production-grade software engineering skills curated by Addy Osmani for AI coding agents, covering architecture, web performance, testing, and code quality.",
+      "ko": "Addy Osmani가 큐레이션한 프로덕션급 소프트웨어 엔지니어링 스킬셋으로, 아키텍처·웹 성능 최적화·테스트·코드 품질 기준을 AI 코딩 에이전트에 적용합니다."
+    }
+  },
+  {
+    "id": "pbakaus-impeccable",
+    "repo": "pbakaus/impeccable",
+    "name": "Impeccable",
+    "category": "Agent Tool",
+    "url": "https://github.com/pbakaus/impeccable",
+    "tags": ["agent-skills", "frontend-design", "ui-critique", "anti-ai-slop", "claude-code"],
+    "description": {
+      "en": "Design vocabulary and critique skill for coding agents that replaces generic AI-looking UI with polished typography, intentional layouts, and visual audits before shipping.",
+      "ko": "뻔한 AI풍 UI(AI slop)를 벗어나 세련된 타이포그래피·레이아웃·시각 검수 기준을 코딩 에이전트에 부여하는 프론트엔드 디자인 스킬셋입니다."
+    }
+  },
+  {
+    "id": "coreyhaines31-marketingskills",
+    "repo": "coreyhaines31/marketingskills",
+    "name": "Marketing Skills",
+    "category": "Agent Tool",
+    "url": "https://github.com/coreyhaines31/marketingskills",
+    "tags": ["agent-skills", "seo", "cro", "copywriting", "growth", "claude-code"],
+    "description": {
+      "en": "Specialized marketing skill suite for Claude Code and AI agents covering technical SEO, conversion rate optimization (CRO), copywriting, analytics, and growth engineering.",
+      "ko": "테크니컬 SEO, 전환율 최적화(CRO), 카피라이팅, 애널리틱스 및 그로스 엔지니어링 업무를 Claude Code와 AI 에이전트로 수행할 수 있게 해주는 마케팅 스킬 모음입니다."
+    }
+  },
+  {
+    "id": "dayuanjiang-next-ai-draw-io",
+    "repo": "DayuanJiang/next-ai-draw-io",
+    "name": "Next AI Draw.io MCP",
+    "category": "MCP Server",
+    "url": "https://github.com/DayuanJiang/next-ai-draw-io",
+    "tags": ["mcp", "draw-io", "diagrams", "architecture", "visualization", "claude-code"],
+    "description": {
+      "en": "AI-powered Draw.io diagramming studio and MCP server enabling Claude Code, Cursor, Codex, and VS Code to create, iterate, and edit editable architecture diagrams via chat.",
+      "ko": "Claude Code, Cursor, Codex, VS Code에서 자연어 대화로 편집 가능한 Draw.io 아키텍처 다이어그램을 생성·수정할 수 있게 해주는 웹 앱 및 MCP 서버입니다."
     }
   }
 ]
