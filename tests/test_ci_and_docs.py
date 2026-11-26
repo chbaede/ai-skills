@@ -70,8 +70,8 @@ class TestWeeklyUpdateWorkflow(unittest.TestCase):
 
     def test_steps_checkout_and_python_setup(self):
         """Must checkout repo and configure Python 3.11."""
-        self.assertIn("actions/checkout@v4", self.raw_content)
-        self.assertIn("actions/setup-python@v5", self.raw_content)
+        self.assertIn("actions/checkout@v7", self.raw_content)
+        self.assertIn("actions/setup-python@v7", self.raw_content)
         self.assertRegex(self.raw_content, r"python-version:\s*['\"]?3\.11['\"]?")
 
     def test_execution_with_github_token(self):
@@ -203,10 +203,10 @@ class TestDeployPagesWorkflow(unittest.TestCase):
 
     def test_actions_steps(self):
         """Must use official Pages actions."""
-        self.assertIn("actions/checkout@v4", self.raw_content)
-        self.assertIn("actions/configure-pages@v5", self.raw_content)
-        self.assertIn("actions/upload-pages-artifact@v3", self.raw_content)
-        self.assertIn("actions/deploy-pages@v4", self.raw_content)
+        self.assertIn("actions/checkout@v7", self.raw_content)
+        self.assertIn("actions/configure-pages@v6", self.raw_content)
+        self.assertIn("actions/upload-pages-artifact@v5", self.raw_content)
+        self.assertIn("actions/deploy-pages@v5", self.raw_content)
 
 
 class TestDocumentation(unittest.TestCase):
