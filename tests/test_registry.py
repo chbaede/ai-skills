@@ -52,6 +52,7 @@ EXPECTED_REPOS = [
     "pbakaus/impeccable",
     "coreyhaines31/marketingskills",
     "DayuanJiang/next-ai-draw-io",
+    "AlexsJones/llmfit",
 ]
 
 CURATOR_PICKS = [
@@ -59,6 +60,7 @@ CURATOR_PICKS = [
     "multica-ai/andrej-karpathy-skills",
     "Egonex-AI/Understand-Anything",
     "hugohe3/ppt-master",
+    "AlexsJones/llmfit",
 ]
 
 
@@ -77,12 +79,12 @@ class TestRegistrySchema(unittest.TestCase):
     def test_item_count(self):
         self.assertEqual(
             len(self.registry),
-            39,
-            f"Expected exactly 39 items in registry, found {len(self.registry)}",
+            40,
+            f"Expected exactly 40 items in registry, found {len(self.registry)}",
         )
 
     def test_curator_picks_featured(self):
-        """Verify the 4 curator-recommended skills have featured: true."""
+        """Verify the 5 curator-recommended skills have featured: true."""
         featured_repos = [item["repo"] for item in self.registry if item.get("featured")]
         for pick in CURATOR_PICKS:
             self.assertIn(pick, featured_repos, f"Expected {pick} to be marked as featured")

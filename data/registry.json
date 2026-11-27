@@ -470,5 +470,18 @@
       "en": "AI-powered Draw.io diagramming studio and MCP server enabling Claude Code, Cursor, Codex, and VS Code to create, iterate, and edit editable architecture diagrams via chat.",
       "ko": "Claude Code, Cursor, Codex, VS Code에서 자연어 대화로 편집 가능한 Draw.io 아키텍처 다이어그램을 생성·수정할 수 있게 해주는 웹 앱 및 MCP 서버입니다."
     }
+  },
+  {
+    "id": "alexsjones-llmfit",
+    "repo": "AlexsJones/llmfit",
+    "name": "llmfit",
+    "category": "Agent Tool",
+    "url": "https://github.com/AlexsJones/llmfit",
+    "featured": true,
+    "tags": ["local-llm", "hardware", "gguf", "mlx", "cli", "skill"],
+    "description": {
+      "en": "Fast Rust CLI and agent skill that inspects your system hardware (RAM, VRAM, CPU/GPU) to instantly recommend which of hundreds of local LLM models and quantizations will run smoothly.",
+      "ko": "내 시스템 하드웨어(RAM, VRAM, CPU/GPU)를 분석해 수백 개의 로컬 LLM 모델과 양자화(GGUF/MLX) 중 원활하게 실행 가능한 최적의 모델을 명령어 하나로 찾아주는 Rust 기반 CLI 및 스킬입니다."
+    }
   }
 ]
